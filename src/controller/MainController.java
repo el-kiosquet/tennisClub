@@ -32,7 +32,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void click(ActionEvent event) {
-        System.out.println("hola");
+        System.out.println("hola, he cambiado");
     }
     
 }
