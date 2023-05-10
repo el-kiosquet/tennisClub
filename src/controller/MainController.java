@@ -4,12 +4,18 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -19,7 +25,7 @@ import javafx.scene.control.Button;
 public class MainController implements Initializable {
 
     @FXML
-    private Button button;
+    private Button register;
 
 
     /**
@@ -31,8 +37,18 @@ public class MainController implements Initializable {
     }    
 
     @FXML
-    private void click(ActionEvent event) {
-        System.out.println("hola, he cambiado");
+    private void click(ActionEvent event) throws IOException {
+        FXMLLoader miCargador = new
+        FXMLLoader(getClass().getResource("/view/Register.fxml"));
+        Parent root = miCargador.load();
+        
+        Scene scene = new Scene(root,500,300);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Registrar un nuevo usuario");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        //la ventana se muestra modal
+        stage.showAndWait();
     }
     
 }
