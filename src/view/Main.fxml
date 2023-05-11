@@ -11,7 +11,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
-      <Button fx:id="register" layoutX="62.0" layoutY="49.0" mnemonicParsing="false" onAction="#click" text="Cuenta nueva" />
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="373.0" prefWidth="148.0">
+         <children>
+            <Button fx:id="register" alignment="CENTER" mnemonicParsing="false" onAction="#click" text="Register New Account" textAlignment="CENTER" />
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </VBox>
       <VBox alignment="CENTER" layoutX="377.0" layoutY="14.0" prefHeight="373.0" prefWidth="209.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Today's Schedule" />
