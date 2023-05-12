@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import model.Club;
+import model.ClubDAOException;
 import model.Member;
 
 /**
@@ -66,15 +68,17 @@ public class RegisterController implements Initializable {
     private int scv;
     private Image img;
     private Member member;
+    Club club;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb){
+        // TODO 
         registryButton.setOnAction(this::registry);
     }
+    
 
     //public class that returns member to pass after pressing register
     public void getMember(){
@@ -103,20 +107,20 @@ public class RegisterController implements Initializable {
         
         img = null;
         
-        //test values
-        //TO COMPLETE
-        
-        System.out.println(check());
-        //create member
-        //TO COMPLETE
-        //member = new Member(name, surname, telephone,nickName, password, creditCard, svc, img); <--- Opcion más lógica, pero han decidido que el constructor sea privado
-        //RegisterController.registryMember(); <-- en teoria deberia ser con este método
-        
-        
+        // if all correct, create member
+        if(validUser()){
+            try{
+                club = Club.getInstance();
+                club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            
+        }
     }
     
     
-    private boolean check(){
+    private boolean validUser(){
         isOk = true;
         
         // no checkins for name
