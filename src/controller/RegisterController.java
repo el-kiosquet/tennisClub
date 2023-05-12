@@ -6,6 +6,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,7 +63,7 @@ public class RegisterController implements Initializable {
     //variable to check wether the values have to be passed or not
     private boolean isOk = false;
     private String name, surname, telephone, nickName, password, creditCard;
-    private int svc;
+    private int scv;
     private Image img;
     private Member member;
 
@@ -89,12 +91,22 @@ public class RegisterController implements Initializable {
         nickName = textNickname.getText();
         password = textPassword.getText();
         creditCard = textCreditCard.getText();
-        svc = Integer.parseInt(textSCV.getText());
+        try{
+            scv = Integer.parseInt(textSCV.getText());
+        }catch(NumberFormatException e){
+            String string = textSCV.getText();
+            if(string.length() != 0){errorSCV.setText("scv must contain only 3 numbers");
+            System.out.println("scv must contain only 3 numbers"); 
+            }
+            
+        }
+        
         img = null;
         
         //test values
         //TO COMPLETE
         
+        System.out.println(check());
         //create member
         //TO COMPLETE
         //member = new Member(name, surname, telephone,nickName, password, creditCard, svc, img); <--- Opcion más lógica, pero han decidido que el constructor sea privado
@@ -104,8 +116,80 @@ public class RegisterController implements Initializable {
     }
     
     
-    private static boolean check(){
-        return false;
+    private boolean check(){
+        isOk = true;
+        
+        // no checkins for name
+        // check only if the field is not empty
+        if(name.length() == 0){
+            
+            isOk = false;
+            System.out.println("put name");
+        }
+        
+        
+        // no checkins for surname
+        // check only if the field is not empty
+        if(surname.length() == 0){
+            isOk = false;
+            System.out.println("put surname");
+        }
+        
+        // no checkins for surname
+        // check only if the field is not empty
+        if(telephone.length() == 0){
+            isOk = false;
+            System.out.println("put telephone");
+        }
+       
+        
+        //find whitespaces in nickName
+        Matcher matcher = Pattern.compile("[ ]").matcher(nickName);
+        //if white space find:
+        if(matcher.find()){
+            isOk = false;
+            System.out.println("nickName can't have spaces");
+        }
+        //if field is empty
+        else if(nickName.length() == 0){ 
+            isOk = false;
+            System.out.println("put nickName");
+        }
+        
+        
+        // password checkins:
+        // if it has letters and numbers
+        // length > 6
+        matcher = Pattern.compile("[0-9]+[a-z]|[a-z]+[0-9]", Pattern.CASE_INSENSITIVE).matcher(password);
+        if(password.length() <= 6){
+            isOk = false;
+            System.out.println("password to short");
+        }
+        else if(!matcher.find()){
+            isOk = false;
+            System.out.println("password must have letters and numbers");
+        }
+        
+        
+        //check repeated password
+        if(!textRepeatedPassword.getText().equals(password)){
+            System.out.println("passwords don't coincide");
+        }
+        
+        // 16 numbers
+        // only numbers
+        matcher = Pattern.compile("[^0-9]").matcher(creditCard);
+        if(creditCard.length() != 16){
+            isOk = false;
+            System.out.println("credit card must contain 16 numbers");
+        }
+        else if(matcher.find()){
+            isOk = false;
+            System.out.println("credit card must contain only numbers");
+        }
+        
+        
+        return isOk;
     }
     
     

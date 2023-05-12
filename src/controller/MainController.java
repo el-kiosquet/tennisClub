@@ -45,11 +45,12 @@ public class MainController implements Initializable {
         FXMLLoader(getClass().getResource("/view/Register.fxml"));
         Parent root = miCargador.load();
         
-        Scene scene = new Scene(root,500,300);
+        Scene scene = new Scene(root,400,500);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Registrar un nuevo usuario");
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.resizableProperty().set(false);
         //la ventana se muestra modal
         stage.showAndWait();
     }
