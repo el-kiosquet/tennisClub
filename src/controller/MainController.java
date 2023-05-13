@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import model.Club;
 import model.Member;
 
+
 /**
  * FXML Controller class
  *
@@ -94,9 +95,9 @@ public class MainController implements Initializable {
             }else{
                 FXMLLoader miCargador = new
                 FXMLLoader(getClass().getResource("/view/UserPage.fxml"));
-                 Parent root = miCargador.load();
-        
-                 Scene scene = new Scene(root,400,500);
+                Parent root = miCargador.load();
+             
+                 Scene scene = new Scene(root);
                  Stage stage = new Stage();
                  stage.setScene(scene);
                  stage.setTitle("Esta es tu ventana de usuario");
