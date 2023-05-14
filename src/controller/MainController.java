@@ -25,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
 import model.Member;
+import view.UserPageController;
 
 
 /**
@@ -97,6 +98,11 @@ public class MainController implements Initializable {
                 FXMLLoader(getClass().getResource("/view/UserPage.fxml"));
                 Parent root = miCargador.load();
              
+                UserPageController userpage = miCargador.getController();
+                Member member = club.getMemberByCredentials(name, pass);
+                System.out.println(member.getName());
+                userpage.initMem(member);
+                
                  Scene scene = new Scene(root);
                  Stage stage = new Stage();
                  stage.setScene(scene);
