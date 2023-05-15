@@ -4,7 +4,9 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,6 +71,12 @@ public class RegisterController implements Initializable {
     private Image img;
     private Member member;
     Club club;
+    @FXML
+    private Label errorName;
+    @FXML
+    private Label errorSurname;
+    @FXML
+    private Label errorPhone;
 
     /**
      * Initializes the controller class.
@@ -88,6 +96,16 @@ public class RegisterController implements Initializable {
     @FXML
     private void registry(ActionEvent event) {
         
+        //restore errorLabel values
+        errorName.setText("");
+        errorSurname.setText("");
+        errorPhone.setText("");
+        errorNickname.setText("");
+        errorPassword.setText("");
+        errorRepeatPassword.setText("");
+        errorSCV.setText("");
+        
+        
         //get values
         name = textName.getText();
         surname = textSurname.getText();
@@ -95,26 +113,23 @@ public class RegisterController implements Initializable {
         nickName = textNickname.getText();
         password = textPassword.getText();
         creditCard = textCreditCard.getText();
-        try{
-            scv = Integer.parseInt(textSCV.getText());
-        }catch(NumberFormatException e){
-            String string = textSCV.getText();
-            if(string.length() != 0){errorSCV.setText("scv must contain only 3 numbers");
-            System.out.println("scv must contain only 3 numbers"); 
-            }
-            
-        }
-        
         img = null;
+        
+        try{
+                club = Club.getInstance();
+                
+            }catch(IOException | ClubDAOException e){
+                System.out.println(e.getMessage());
+            }
         
         // if all correct, create member
         if(validUser()){
             try{
-                club = Club.getInstance();
-                club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+                Member newMember = club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
+            }catch(ClubDAOException e){System.err.println(e.getMessage());}
+            
+            
+            
             
         }
     }
@@ -126,38 +141,44 @@ public class RegisterController implements Initializable {
         // no checkins for name
         // check only if the field is not empty
         if(name.length() == 0){
-            
             isOk = false;
-            System.out.println("put name");
+            errorName.setText("put name");
         }
-        
         
         // no checkins for surname
         // check only if the field is not empty
         if(surname.length() == 0){
             isOk = false;
-            System.out.println("put surname");
+            errorSurname.setText("put surname");
         }
         
-        // no checkins for surname
+        // no checkins for telephone number
         // check only if the field is not empty
         if(telephone.length() == 0){
             isOk = false;
-            System.out.println("put telephone");
+            errorPhone.setText("put telephone");
         }
        
-        
         //find whitespaces in nickName
         Matcher matcher = Pattern.compile("[ ]").matcher(nickName);
         //if white space find:
         if(matcher.find()){
             isOk = false;
-            System.out.println("nickName can't have spaces");
+            errorNickname.setText("nickName can't have spaces");
         }
         //if field is empty
         else if(nickName.length() == 0){ 
             isOk = false;
-            System.out.println("put nickName");
+            errorNickname.setText("put nickName");
+        }
+        else{
+            List<Member> listOfMembers = club.getMembers();
+            for(int i = 0; i < listOfMembers.size(); i++){
+                if(listOfMembers.get(i).getNickName().equals(nickName)){
+                    errorNickname.setText("member already exists");
+                    isOk = false;
+                }
+        }
         }
         
         
@@ -167,17 +188,17 @@ public class RegisterController implements Initializable {
         matcher = Pattern.compile("[0-9]+[a-z]|[a-z]+[0-9]", Pattern.CASE_INSENSITIVE).matcher(password);
         if(password.length() <= 6){
             isOk = false;
-            System.out.println("password to short");
+            errorPassword.setText("password to short");
         }
         else if(!matcher.find()){
             isOk = false;
-            System.out.println("password must have letters and numbers");
+            errorPassword.setText("password must have letters and numbers");
         }
         
         
         //check repeated password
         if(!textRepeatedPassword.getText().equals(password)){
-            System.out.println("passwords don't coincide");
+            errorRepeatPassword.setText("passwords don't coincide");
         }
         
         // 16 numbers
@@ -185,12 +206,22 @@ public class RegisterController implements Initializable {
         matcher = Pattern.compile("[^0-9]").matcher(creditCard);
         if(creditCard.length() != 16){
             isOk = false;
-            System.out.println("credit card must contain 16 numbers");
+            errorCreditCard.setText("credit card must contain 16 numbers");
         }
         else if(matcher.find()){
             isOk = false;
-            System.out.println("credit card must contain only numbers");
+            errorCreditCard.setText("credit card must contain only numbers");
         }
+        
+        //check SCV
+        try{
+            scv = Integer.parseInt(textSCV.getText());
+        }catch(NumberFormatException e){
+            if(textSCV.getText().length() != 0){
+                errorSCV.setText("scv must contain only 3 numbers");
+            } 
+        }
+        if(textSCV.getText().length() != 3 && textSCV.getText().length() != 0){errorSCV.setText("scv must contain only 3 numbers");}
         
         
         return isOk;

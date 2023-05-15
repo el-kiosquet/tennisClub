@@ -32,7 +32,7 @@ public class TCDataGenerator {
         Club club= Club.getInstance(); 
         //==================================
         //Clean the file club.db
-        club.setInitialData();
+        //club.setInitialData();
         
         //===================================
         // club data:
@@ -47,7 +47,7 @@ public class TCDataGenerator {
         //===================================
         // users        
         for (Member member : club.getMembers()) {
-            System.out.println("member:" + member.getName()+ ", "+ member.getNickName());
+            System.out.println("member:" + member.getName()+ ", "+ member.getNickName() + ", pass: " + member.getPassword());
         }
         
         //===================================

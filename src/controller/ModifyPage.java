@@ -4,14 +4,19 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Club;
+import model.ClubDAOException;
 import model.Member;
 
 /**
@@ -54,6 +59,7 @@ public class ModifyPage implements Initializable {
     @FXML
     private Button modifyButton;
 
+    private Club club;
     /**
      * Initializes the controller class.
      */
@@ -63,10 +69,6 @@ public class ModifyPage implements Initializable {
        
     }    
 
-    @FXML
-    private void registry(ActionEvent event) {
-        
-    }
     
     public void initMember(Member user){
         member=user;
@@ -79,5 +81,21 @@ public class ModifyPage implements Initializable {
         textCreditCard.setText(member.getCreditCard());
         textSCV.setText(""+member.getSvc());
         
+        try {
+            club = Club.getInstance();
+        } catch (Exception ex) {
+            Logger.getLogger(ModifyPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void modifyChanges(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void cancel(ActionEvent event) {
     }
 }

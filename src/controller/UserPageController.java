@@ -38,7 +38,7 @@ public class UserPageController implements Initializable {
     private Text nick;
     
     private Member member;
-
+    
     /**
      * Initializes the controller class.
      */
