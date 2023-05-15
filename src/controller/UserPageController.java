@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package view;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +37,7 @@ public class UserPageController implements Initializable {
     @FXML
     private Text nick;
     
-    public Member member;
+    private Member member;
 
     /**
      * Initializes the controller class.
@@ -57,6 +57,11 @@ public class UserPageController implements Initializable {
         FXMLLoader miCargador = new
         FXMLLoader(getClass().getResource("/view/ModifyPage.fxml"));
         Parent root = miCargador.load();
+        
+        ModifyPage modifypage = miCargador.getController();
+        Member user = member;
+        System.out.println(member.getName());
+        modifypage.initMember(user);
                 
         Scene scene = new Scene(root);
         Stage stage = new Stage();

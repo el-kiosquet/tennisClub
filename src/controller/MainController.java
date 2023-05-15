@@ -25,7 +25,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
 import model.Member;
-import view.UserPageController;
 
 
 /**

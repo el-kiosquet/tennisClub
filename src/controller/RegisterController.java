@@ -36,6 +36,7 @@ public class RegisterController implements Initializable {
     private TextField textSurname;
     @FXML
     private TextField textPhone;
+    @FXML
     private TextField textNickname;
     @FXML
     private Label errorNickname;
@@ -68,8 +69,6 @@ public class RegisterController implements Initializable {
     private Image img;
     private Member member;
     Club club;
-    @FXML
-    private Label nick;
 
     /**
      * Initializes the controller class.
