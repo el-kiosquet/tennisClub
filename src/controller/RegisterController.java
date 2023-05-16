@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
@@ -83,7 +84,7 @@ public class RegisterController implements Initializable {
     @FXML
     private ImageView imageDisplay;
     @FXML
-    private Pagination imageSelector;
+    private ChoiceBox<String> imageSelector;
 
     /**
      * Initializes the controller class.
@@ -92,6 +93,21 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         // TODO 
         registryButton.setOnAction(this::registry);
+        imageSelector.setOnAction(this::imageChange);
+        imageSelector.getItems().add("Avatar 1");
+        imageSelector.getItems().add("Avatar 2");
+        imageSelector.getItems().add("Avatar 3");
+        imageSelector.getItems().add("Avatar 4");
+        imageSelector.getItems().add("Avatar 5");
+        imageSelector.getItems().add("Avatar 6");
+        imageSelector.getItems().add("Avatar 7");
+        imageSelector.getItems().add("Avatar 8");
+        imageSelector.getItems().add("Avatar 9");
+        imageSelector.getItems().add("Avatar 10");
+        imageSelector.getItems().add("Avatar 11");
+        imageSelector.getItems().add("Avatar 12");
+
+
     }
     
 
@@ -233,8 +249,16 @@ public class RegisterController implements Initializable {
         
         return isOk;
     }
-
     
+    // This array contains the routes to the files of the avatars
+    private String[] imageArray = new String[12];
+    /** This method reads the selected option for the avatar and updates 
+     * imageDisplay acordingly
+     * @param event 
+     */
+    private void imageChange(ActionEvent event) {
+        int selectedIndex = imageSelector.getSelectionModel().getSelectedIndex();
+    }
     
     
     
