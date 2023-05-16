@@ -15,8 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import model.Club;
 import model.ClubDAOException;
 import model.Member;
@@ -77,6 +80,10 @@ public class RegisterController implements Initializable {
     private Label errorSurname;
     @FXML
     private Label errorPhone;
+    @FXML
+    private ImageView imageDisplay;
+    @FXML
+    private Pagination imageSelector;
 
     /**
      * Initializes the controller class.
@@ -226,6 +233,8 @@ public class RegisterController implements Initializable {
         
         return isOk;
     }
+
+    
     
     
     
