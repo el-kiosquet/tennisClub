@@ -96,19 +96,21 @@ public class MainController implements Initializable {
                 FXMLLoader miCargador = new
                 FXMLLoader(getClass().getResource("/view/UserPage.fxml"));
                 Parent root = miCargador.load();
-             
+             /*
                 UserPageController userpage = miCargador.getController();
                 Member member = club.getMemberByCredentials(name, pass);
                 System.out.println(member.getName());
                 userpage.initMem(member);
+                */
                 
                  Scene scene = new Scene(root);
-                 Stage stage = new Stage();
+                 Stage stage = (Stage) register.getScene().getWindow(); // instead of: Stage stage = new Stage();
                  stage.setScene(scene);
                  stage.setTitle("Esta es tu ventana de usuario");
                  stage.initModality(Modality.APPLICATION_MODAL);
                  stage.resizableProperty().set(false);
                  //la ventana se muestra modal
+
                  stage.showAndWait();
             }
         }else{

@@ -38,6 +38,8 @@ public class UserPageController implements Initializable {
     private Text nick;
     
     private Member member;
+    @FXML
+    private Button logOut;
     
     /**
      * Initializes the controller class.
@@ -71,6 +73,21 @@ public class UserPageController implements Initializable {
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal
         stage.showAndWait();
+    }
+
+    @FXML
+    private void logOut(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) logOut.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Tennis Club");
+            stage.show();
+        }catch(Exception e){System.err.println(e.getMessage());}
+        
+        
     }
     
 }

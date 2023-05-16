@@ -28,7 +28,12 @@
             </Button>
             <Button fx:id="Profile" mnemonicParsing="false" onAction="#proffileData" prefHeight="40.0" prefWidth="218.0" text="Change profile data">
                <VBox.margin>
-                  <Insets left="10.0" right="10.0" top="150.0" />
+                  <Insets left="10.0" right="10.0" top="100.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="logOut" mnemonicParsing="false" onAction="#logOut" prefHeight="40.0" prefWidth="218.0" text="Log out">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </Button>
          </children>
