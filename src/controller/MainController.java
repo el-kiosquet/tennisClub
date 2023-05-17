@@ -87,7 +87,7 @@ public class MainController implements Initializable {
         Club club = Club.getInstance();
         if(club.existsLogin(name)){
             
-            if(club.getMemberByCredentials(name, pass)== null){
+                if(club.getMemberByCredentials(name, pass)== null){
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Log in Failure");
                 alert.setHeaderText("Information error");

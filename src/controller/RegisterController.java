@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
 import model.Member;
@@ -194,6 +195,12 @@ public class RegisterController implements Initializable {
         
         
         return isOk;
+    }
+
+    @FXML
+    private void cancelAct(ActionEvent event) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
     
     

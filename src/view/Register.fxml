@@ -158,7 +158,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #eff0f3;">
                <children>
                   <Button fx:id="registryButton" mnemonicParsing="false" onAction="#registry" prefHeight="25.0" prefWidth="111.0" text="Register" />
-                  <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Cancel" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAct" prefHeight="25.0" prefWidth="115.0" text="Cancel" />
                </children>
             </HBox>
          </children>
