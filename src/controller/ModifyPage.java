@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Models.Validations;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -31,8 +32,6 @@ public class ModifyPage implements Initializable {
     @FXML
     private TextField textPhone;
     @FXML
-    private Label errorNickname;
-    @FXML
     private TextField textPassword;
     @FXML
     private Label errorPassword;
@@ -56,6 +55,12 @@ public class ModifyPage implements Initializable {
     private Member member;
     @FXML
     private Button modifyButton;
+    @FXML
+    private Label errorName;
+    @FXML
+    private Label errorSurname;
+    @FXML
+    private Label errorPhone;
 
     /**
      * Initializes the controller class.
@@ -68,6 +73,7 @@ public class ModifyPage implements Initializable {
 
     @FXML
     private void registry(ActionEvent event) {
+        System.out.println(isValid());
         
     }
     
@@ -86,62 +92,32 @@ public class ModifyPage implements Initializable {
     
     private boolean isValid(){
         boolean isOk = true;
-        
-        // no checkins for name
-        // check only if the field is not empty
-        if(textName.getText().length() == 0){
-            
+        Validations.resetErrorLabels();
+        if(!Validations.noEmpty(textName.getText())){
             isOk = false;
-            System.out.println("put name");
+            errorName.setText("put Name");
+            System.out.println("ok");
         }
-        
-        
-        // no checkins for surname
-        // check only if the field is not empty
-        if(textSurname.getText().length() == 0){
+        if(!Validations.noEmpty(textSurname.getText())){
             isOk = false;
-            System.out.println("put surname");
+            errorSurname.setText("put Surname");
         }
-        
-        // no checkins for surname
-        // check only if the field is not empty
-        if(textPhone.getText().length() == 0){
+        if(!Validations.noEmpty(textPhone.getText())){
             isOk = false;
-            System.out.println("put telephone");
-        }
-            
-        // password checkins:
-        // if it has letters and numbers
-        // length > 6
-        Matcher matcher = Pattern.compile("[0-9]+[a-z]|[a-z]+[0-9]", Pattern.CASE_INSENSITIVE).matcher(textPassword.getText());
-        if(textPassword.getText().length() <= 6){
-            isOk = false;
-            System.out.println("password to short");
-        }
-        else if(!matcher.find()){
-            isOk = false;
-            System.out.println("password must have letters and numbers");
+            errorPhone.setText("Put telephone");
         }
         
-        
-        //check repeated password
-        if(!textRepeatedPassword.getText().equals(textPassword.getText())){
-            System.out.println("passwords don't coincide");
+        isOk &= Validations.validatePassword(textPassword.getText());
+        isOk &= Validations.equalPasswords(textPassword.getText(), textRepeatedPassword.getText());
+        isOk &= Validations.validateCreditCard(textCreditCard.getText());
+        isOk &= Validations.validateScv(textSCV.getText());
+
+        if(!isOk){
+            errorPassword.setText(Validations.errorPassword);
+            errorRepeatPassword.setText(Validations.errorRepeatedPassword);
+            errorCreditCard.setText(Validations.errorCreditCard);
+            errorSCV.setText(Validations.errorScv);
         }
-        
-        // 16 numbers
-        // only numbers
-        matcher = Pattern.compile("[^0-9]").matcher(textCreditCard.getText());
-        if(textCreditCard.getText().length() != 16){
-            isOk = false;
-            System.out.println("credit card must contain 16 numbers");
-        }
-        else if(matcher.find()){
-            isOk = false;
-            System.out.println("credit card must contain only numbers");
-        }
-        
-        
         return isOk;
     }
 

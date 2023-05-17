@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Models.Validations;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -69,7 +70,14 @@ public class RegisterController implements Initializable {
     private int scv;
     private Image img;
     private Member member;
+    
     Club club;
+    @FXML
+    private Label errorName;
+    @FXML
+    private Label errorSurname;
+    @FXML
+    private Label errorPhone;
 
     /**
      * Initializes the controller class.
@@ -107,94 +115,59 @@ public class RegisterController implements Initializable {
         }
         
         img = null;
-        
+        System.out.println(validUser());
         // if all correct, create member
+        
         if(validUser()){
             try{
-                club = Club.getInstance();
-                club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
+                //club = Club.getInstance();
+                //club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
+                Stage stage = (Stage) cancelButton.getScene().getWindow();
+                stage.close();
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }
             
         }
+        
     }
     
     
     private boolean validUser(){
         isOk = true;
-        
-        // no checkins for name
-        // check only if the field is not empty
-        if(name.length() == 0){
-            
+        Validations.resetErrorLabels();
+        if(!Validations.noEmpty(name)){
             isOk = false;
-            System.out.println("put name");
-        }
+            errorName.setText("put Name");
+        }else{errorName.setText("");}
         
-        
-        // no checkins for surname
-        // check only if the field is not empty
-        if(surname.length() == 0){
+        if(!Validations.noEmpty(surname)){
             isOk = false;
-            System.out.println("put surname");
-        }
+            errorSurname.setText("put Surname");
+        }else{errorSurname.setText("");}
         
-        // no checkins for surname
-        // check only if the field is not empty
-        if(telephone.length() == 0){
+        if(!Validations.noEmpty(telephone)){
             isOk = false;
-            System.out.println("put telephone");
-        }
+            errorPhone.setText("Put telephone");
+        }else{errorPhone.setText("");}
+        
+        isOk &= Validations.validateNickName(nickName);
+        isOk &= Validations.validatePassword(password);
+        isOk &= Validations.equalPasswords(password, textRepeatedPassword.getText());
+        isOk &= Validations.validateCreditCard(creditCard);
+        isOk &= Validations.validateScv(textSCV.getText());
+
+        
+        errorNickname.setText(Validations.errorNickname);
+        errorPassword.setText(Validations.errorPassword);
+        errorRepeatPassword.setText(Validations.errorRepeatedPassword);
+        errorCreditCard.setText(Validations.errorCreditCard);
+        errorSCV.setText(Validations.errorScv);
+        
+        //check if user exists
        
-        
-        //find whitespaces in nickName
-        Matcher matcher = Pattern.compile("[ ]").matcher(nickName);
-        //if white space find:
-        if(matcher.find()){
-            isOk = false;
-            System.out.println("nickName can't have spaces");
-        }
-        //if field is empty
-        else if(nickName.length() == 0){ 
-            isOk = false;
-            System.out.println("put nickName");
-        }
-        
-        
-        // password checkins:
-        // if it has letters and numbers
-        // length > 6
-        matcher = Pattern.compile("[0-9]+[a-z]|[a-z]+[0-9]", Pattern.CASE_INSENSITIVE).matcher(password);
-        if(password.length() <= 6){
-            isOk = false;
-            System.out.println("password to short");
-        }
-        else if(!matcher.find()){
-            isOk = false;
-            System.out.println("password must have letters and numbers");
-        }
-        
-        
-        //check repeated password
-        if(!textRepeatedPassword.getText().equals(password)){
-            System.out.println("passwords don't coincide");
-        }
-        
-        // 16 numbers
-        // only numbers
-        matcher = Pattern.compile("[^0-9]").matcher(creditCard);
-        if(creditCard.length() != 16){
-            isOk = false;
-            System.out.println("credit card must contain 16 numbers");
-        }
-        else if(matcher.find()){
-            isOk = false;
-            System.out.println("credit card must contain only numbers");
-        }
-        
-        
         return isOk;
+        
     }
 
     @FXML

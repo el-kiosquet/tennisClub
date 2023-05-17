@@ -110,7 +110,7 @@ public class MainController implements Initializable {
                  //stage.initModality(Modality.APPLICATION_MODAL);
                  stage.resizableProperty().set(true);
                  //la ventana se muestra modal
-                 stage.showAndWait();
+                 stage.show();
             }
         }else{
             Alert alert = new Alert(AlertType.ERROR);

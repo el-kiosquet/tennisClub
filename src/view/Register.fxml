@@ -20,6 +20,7 @@
                            <children>
                               <Label text="Name" />
                               <TextField fx:id="textName" prefWidth="122.0" />
+                              <Label fx:id="errorName" prefHeight="17.0" prefWidth="152.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -32,6 +33,7 @@
                            <children>
                               <Label text="Surnames" />
                               <TextField fx:id="textSurname" />
+                              <Label fx:id="errorSurname" prefHeight="17.0" prefWidth="152.0" textFill="RED" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="20.0" top="15.0" />
@@ -50,6 +52,7 @@
                            <children>
                               <Label text="Phone Number" />
                               <TextField fx:id="textPhone" />
+                              <Label fx:id="errorPhone" prefHeight="17.0" prefWidth="152.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -66,7 +69,7 @@
                            <children>
                               <Label text="Nickname" />
                               <TextField fx:id="textNickname" prefWidth="100.0" />
-                              <Label fx:id="errorNickname" prefHeight="17.0" prefWidth="152.0" />
+                              <Label fx:id="errorNickname" prefHeight="17.0" prefWidth="152.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -87,7 +90,7 @@
                            <children>
                               <Label text="Password" />
                               <TextField fx:id="textPassword" />
-                              <Label fx:id="errorPassword" prefHeight="17.0" prefWidth="172.0" />
+                              <Label fx:id="errorPassword" prefHeight="17.0" prefWidth="172.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -104,7 +107,7 @@
                            <children>
                               <Label text="Repeat Password" />
                               <TextField fx:id="textRepeatedPassword" prefWidth="100.0" />
-                              <Label fx:id="errorRepeatPassword" prefHeight="17.0" prefWidth="172.0" />
+                              <Label fx:id="errorRepeatPassword" prefHeight="17.0" prefWidth="172.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -125,7 +128,7 @@
                            <children>
                               <Label text="Credit Card" />
                               <TextField fx:id="textCreditCard" />
-                              <Label fx:id="errorCreditCard" prefHeight="17.0" prefWidth="172.0" />
+                              <Label fx:id="errorCreditCard" prefHeight="17.0" prefWidth="172.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -142,7 +145,7 @@
                            <children>
                               <Label text="SCV" />
                               <TextField fx:id="textSCV" maxWidth="50.0" prefWidth="100.0" />
-                              <Label fx:id="errorSCV" prefHeight="17.0" prefWidth="172.0" />
+                              <Label fx:id="errorSCV" prefHeight="17.0" prefWidth="172.0" textFill="RED" />
                            </children>
                            <VBox.margin>
                               <Insets />
