@@ -15,10 +15,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Court;
 import model.Member;
 
 /**
@@ -38,6 +41,24 @@ public class UserPageController implements Initializable {
     private Text nick;
     
     private Member member;
+    @FXML
+    private Button Book;
+    @FXML
+    private TableColumn<String, String> horario;
+    @FXML
+    private TableColumn<Court, String> pista1;
+    @FXML
+    private TableColumn<Court, String> pista2;
+    @FXML
+    private TableColumn<Court, String> pista3;
+    @FXML
+    private TableColumn<Court,String> pista4;
+    @FXML
+    private TableColumn<Court, String> pista5;
+    @FXML
+    private TableColumn<Court, String> pista6;
+    @FXML
+    private TableView<String> tableView;
 
     /**
      * Initializes the controller class.
@@ -45,6 +66,7 @@ public class UserPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }
 
     public void initMem(Member mem){
