@@ -20,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,13 +38,13 @@ public class MainController implements Initializable {
     @FXML
     private Button register;
     @FXML
-    private GridPane dayView;
-    @FXML
     private TextField username;
     @FXML
     private PasswordField password;
     @FXML
     private Button login;
+    @FXML
+    private ImageView img;
 
 
     /**
@@ -103,11 +104,11 @@ public class MainController implements Initializable {
                 userpage.initMem(member);
                 
                  Scene scene = new Scene(root);
-                 Stage stage = new Stage();
+                 Stage stage = (Stage) login.getScene().getWindow();   //new Stage();
                  stage.setScene(scene);
                  stage.setTitle("Esta es tu ventana de usuario");
-                 stage.initModality(Modality.APPLICATION_MODAL);
-                 stage.resizableProperty().set(false);
+                 //stage.initModality(Modality.APPLICATION_MODAL);
+                 stage.resizableProperty().set(true);
                  //la ventana se muestra modal
                  stage.showAndWait();
             }

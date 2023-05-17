@@ -15,8 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -33,32 +35,21 @@ public class UserPageController implements Initializable {
 
     @FXML
     private ImageView img;
-    @FXML
-    private Button Booked;
-    @FXML
-    private Button Profile;
+    //@FXML
+    //private Button Booked;
+    //@FXML
+    //private Button Profile;
     @FXML
     private Text nick;
     
     private Member member;
     @FXML
-    private Button Book;
+    private Button booked;
     @FXML
-    private TableColumn<String, String> horario;
+    private Button profile;
     @FXML
-    private TableColumn<Court, String> pista1;
-    @FXML
-    private TableColumn<Court, String> pista2;
-    @FXML
-    private TableColumn<Court, String> pista3;
-    @FXML
-    private TableColumn<Court,String> pista4;
-    @FXML
-    private TableColumn<Court, String> pista5;
-    @FXML
-    private TableColumn<Court, String> pista6;
-    @FXML
-    private TableView<String> tableView;
+    private Button logOut;
+    
 
     /**
      * Initializes the controller class.
@@ -94,5 +85,20 @@ public class UserPageController implements Initializable {
                  //la ventana se muestra modal
         stage.showAndWait();
     }
-    
+
+    @FXML
+    private void logOut(ActionEvent event) throws IOException{
+        FXMLLoader loader = new
+        FXMLLoader(getClass().getResource("/view/Main.fxml"));
+        Parent root = loader.load();
+       
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) logOut.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Esta es tu ventana de usuario");
+        //stage.initModality(Modality.APPLICATION_MODAL);
+        stage.resizableProperty().set(true);
+                 //la ventana se muestra modal
+        stage.showAndWait();
+    }
 }
