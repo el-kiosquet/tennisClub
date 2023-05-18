@@ -5,10 +5,10 @@
 package controller;
 
 import Models.Validations;
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Club;
-import model.ClubDAOException;
 import model.Member;
 
 /**
@@ -73,6 +72,9 @@ public class RegisterController implements Initializable {
     private Image img;
     private Member member;
     
+    private String[] avatarUrl = new String[14]; //Contains the URLs of the images
+
+    
     Club club;
     @FXML
     private Label errorName;
@@ -92,12 +94,25 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         // TODO 
         registryButton.setOnAction(this::registry);
+        avatarSelect.setOnAction(this::avatarChange);
+        
+        // Load the avatarSelector options
         avatarSelect.getItems().add("Default");
         for ( int i = 1; i < 7; i++ ) {
             avatarSelect.getItems().add("Man " + i);
         }
-        for ( int i = 1; i < 7; i++ ) {
+        for ( int i = 1; i < 8; i++ ) {
             avatarSelect.getItems().add("Woman " + i);
+        }
+        avatarUrl[0] = "default";
+        for(int i = 1; i < 6; i++) {
+            avatarUrl[i] = "men" + (i-1);
+        }
+        for(int i = 6; i < 14; i++) {
+            avatarUrl[i] = "woman" + (i-6);
+        }
+        for ( int i = 0; i < avatarUrl.length; i++ ) {
+            avatarUrl[i] = File.separator+"img"+File.separator+avatarUrl[i]+".PNG";
         }
     }
     
@@ -188,8 +203,20 @@ public class RegisterController implements Initializable {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-    
-    
+    /* Work
+       On
+       Progress
+       The image cant be located
+    */
+    private void avatarChange(ActionEvent event) {
+        int url = 2;
+        try {
+            avatarView.imageProperty().setValue(
+                    new Image( 
+                            new FileInputStream(
+                                    avatarUrl[ url ] ) ) );
+        } catch (Exception e) {e.printStackTrace();}
+    }
     
     
     
