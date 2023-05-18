@@ -13,9 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
@@ -78,6 +80,10 @@ public class RegisterController implements Initializable {
     private Label errorSurname;
     @FXML
     private Label errorPhone;
+    @FXML
+    private ImageView avatarView;
+    @FXML
+    private ChoiceBox<String> avatarSelect;
 
     /**
      * Initializes the controller class.
