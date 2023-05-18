@@ -92,6 +92,13 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         // TODO 
         registryButton.setOnAction(this::registry);
+        avatarSelect.getItems().add("Default");
+        for ( int i = 1; i < 7; i++ ) {
+            avatarSelect.getItems().add("Man " + i);
+        }
+        for ( int i = 1; i < 7; i++ ) {
+            avatarSelect.getItems().add("Woman " + i);
+        }
     }
     
 
