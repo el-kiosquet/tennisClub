@@ -106,10 +106,10 @@ public class RegisterController implements Initializable {
         }
         avatarUrl[0] = "default";
         for(int i = 1; i < 6; i++) {
-            avatarUrl[i] = "men" + (i-1);
+            avatarUrl[i] = "men" + (i);
         }
         for(int i = 6; i < 14; i++) {
-            avatarUrl[i] = "woman" + (i-6);
+            avatarUrl[i] = "woman" + (i-5);
         }
         for ( int i = 0; i < avatarUrl.length; i++ ) {
             avatarUrl[i] = File.separator+"img"+File.separator+avatarUrl[i]+".PNG";
@@ -209,7 +209,7 @@ public class RegisterController implements Initializable {
        The image cant be located
     */
     private void avatarChange(ActionEvent event) {
-        int url = 2;
+        int url = 3;
         try {
             avatarView.imageProperty().setValue(
                     new Image( 
