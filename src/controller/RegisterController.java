@@ -86,6 +86,8 @@ public class RegisterController implements Initializable {
     private ImageView avatarView;
     @FXML
     private ChoiceBox<String> avatarSelect;
+    @FXML
+    private Label errorGeneral;
 
     /**
      * Initializes the controller class.
@@ -148,10 +150,14 @@ public class RegisterController implements Initializable {
         
         if(validUser()){
             try{
-                //club = Club.getInstance();
-                //club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
+                club = Club.getInstance();
+                if(!Validations.repeatedMember(club, nickName)){
+                club.registerMember(name, surname, telephone, nickName, password, creditCard, scv, img);
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
+                }
+                else{errorGeneral.setText("user already exist");}
+                
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }

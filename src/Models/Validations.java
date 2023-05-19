@@ -4,8 +4,11 @@
  */
 package Models;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import model.Club;
+import model.Member;
 
 /**
  *
@@ -95,6 +98,16 @@ public class Validations {
         errorPassword=""; errorRepeatedPassword="";
         errorCreditCard=""; errorScv="";
         errorNickname="";
+    }
+    
+    public static boolean repeatedMember(Club club, String nickname){
+        List<Member> list = club.getMembers();
+        
+        
+        for(Member m : list){
+            if(m.getNickName().equals(nickname)) return true;
+        }
+        return false;
     }
     
 }
