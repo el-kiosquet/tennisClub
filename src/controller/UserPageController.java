@@ -23,6 +23,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Club;
+import model.ClubDAOException;
 import model.Court;
 import model.Member;
 
@@ -100,5 +102,13 @@ public class UserPageController implements Initializable {
         stage.resizableProperty().set(true);
                  //la ventana se muestra modal
         stage.show();
+    }
+    
+    public void pruebas() throws ClubDAOException, IOException{
+        
+        Club club = Club.getInstance();
+        club.getCourts();
+            
+        
     }
 }
