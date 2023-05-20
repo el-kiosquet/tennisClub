@@ -70,15 +70,56 @@ public class UserPageController implements Initializable {
     @FXML
     private DatePicker calendar;
     
-
+    private LocalDate today = LocalDate.now();
+    public int remain = 6;
+    @FXML
+    private Label label9;
+    @FXML
+    private Label label12;
+    @FXML
+    private Label label11;
+    @FXML
+    private Label label10;
+    @FXML
+    private Label label20;
+    @FXML
+    private Label label19;
+    @FXML
+    private Label label18;
+    @FXML
+    private Label label17;
+    @FXML
+    private Label label16;
+    @FXML
+    private Label label15;
+    @FXML
+    private Label label14;
+    @FXML
+    private Label label13;
+    @FXML
+    private Label label21;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+        calendar.setValue(today);
         try {
             // TODO
             Club club = Club.getInstance();
+            List<Booking> books = club.getForDayBookings(today);
+            
+            for(int j = 0; j<labels.length;j++){
+                remain=6;
+                for(int i = 0; i<books.size();i++){
+                    if(books.get(i).getFromTime().equals(LocalTime.of(9+j, 0))) {
+                         remain--;
+                    }
+                }
+                labels[j].setText("There are "+remain+" courts left");
+            }  
         } catch (ClubDAOException ex) {
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
