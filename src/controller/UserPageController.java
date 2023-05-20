@@ -6,7 +6,13 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.temporal.WeekFields;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
@@ -26,6 +33,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Booking;
 import model.Club;
 import model.ClubDAOException;
 import model.Court;
@@ -55,13 +63,19 @@ public class UserPageController implements Initializable {
     @FXML
     private Button logOut;
     private Club club;
+    @FXML
+    private Label todayLabel;
+    @FXML
+    private Label selectDaylabel;
+    @FXML
+    private DatePicker calendar;
     
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
         try {
             // TODO
             Club club = Club.getInstance();
@@ -116,13 +130,29 @@ public class UserPageController implements Initializable {
         stage.show();
     }
     
-    public void pruebas(){
-        List<Court> list = club.getCourts();
+    private void pruebas() throws ClubDAOException, IOException{
+        club = Club.getInstance();
         
-        for(Court c : list){
-            System.out.println(c.getName());
+        //club.registerBooking(LocalDateTime.now(), LocalDate.MAX, LocalTime.NOON, true, court , member);
+        LocalDate lc = LocalDate.now().plusDays(4);
+        LocalDate ld = LocalDate.of(2025, Month.APRIL, 30);
+        
+        System.out.println(LocalDateTime.now().toString() + " , " + ld.toString());
         }
-            
-        
+
+    @FXML
+    private void booking(ActionEvent event) {
+        try {
+            pruebas();
+            /*
+            List<Court> list = club.getCourts();
+            for(Court c : list){
+            System.out.println(c.getName());
+            }
+        */      } catch (ClubDAOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
