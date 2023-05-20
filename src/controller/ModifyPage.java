@@ -109,8 +109,8 @@ public class ModifyPage implements Initializable {
         
         isOk &= Validations.validatePassword(textPassword.getText());
         isOk &= Validations.equalPasswords(textPassword.getText(), textRepeatedPassword.getText());
-        isOk &= Validations.validateCreditCard(textCreditCard.getText());
-        isOk &= Validations.validateScv(textSCV.getText());
+        isOk &= Validations.validateCreditCard(textCreditCard.getText(), textSCV.getText());
+        //isOk &= Validations.validateScv(textSCV.getText());
 
         if(!isOk){
             errorPassword.setText(Validations.errorPassword);

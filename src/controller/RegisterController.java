@@ -98,6 +98,8 @@ public class RegisterController implements Initializable {
         registryButton.setOnAction(this::registry);
         avatarSelect.setOnAction(this::avatarChange);
         
+        avatarView.setImage(new Image("\\img\\men3.PNG"));
+        
         // Load the avatarSelector options
         avatarSelect.getItems().add("Default");
         for ( int i = 1; i < 7; i++ ) {
@@ -188,8 +190,8 @@ public class RegisterController implements Initializable {
         isOk &= Validations.validateNickName(nickName);
         isOk &= Validations.validatePassword(password);
         isOk &= Validations.equalPasswords(password, textRepeatedPassword.getText());
-        isOk &= Validations.validateCreditCard(creditCard);
-        isOk &= Validations.validateScv(textSCV.getText());
+        isOk &= Validations.validateCreditCard(creditCard, textSCV.getText());
+        //isOk &= Validations.validateScv(textSCV.getText());
 
         
         errorNickname.setText(Validations.errorNickname);
@@ -215,6 +217,7 @@ public class RegisterController implements Initializable {
        The image cant be located
     */
     private void avatarChange(ActionEvent event) {
+        /*
         int url = 3;
         try {
             avatarView.imageProperty().setValue(
@@ -222,6 +225,15 @@ public class RegisterController implements Initializable {
                             new FileInputStream(
                                     avatarUrl[ url ] ) ) );
         } catch (Exception e) {e.printStackTrace();}
+
+        */
+        int url = 5;
+        try {
+            avatarView.setImage(
+                    new Image( avatarUrl[url]));
+            
+        } catch (Exception e) {e.printStackTrace();}
+        
     }
     
     

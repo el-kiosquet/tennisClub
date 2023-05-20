@@ -6,7 +6,10 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +54,7 @@ public class UserPageController implements Initializable {
     private Button profile;
     @FXML
     private Button logOut;
+    private Club club;
     
 
     /**
@@ -58,7 +62,15 @@ public class UserPageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            // TODO
+            Club club = Club.getInstance();
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //pruebas();
         
     }
 
@@ -104,10 +116,12 @@ public class UserPageController implements Initializable {
         stage.show();
     }
     
-    public void pruebas() throws ClubDAOException, IOException{
+    public void pruebas(){
+        List<Court> list = club.getCourts();
         
-        Club club = Club.getInstance();
-        club.getCourts();
+        for(Court c : list){
+            System.out.println(c.getName());
+        }
             
         
     }

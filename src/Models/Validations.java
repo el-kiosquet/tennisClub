@@ -61,19 +61,43 @@ public class Validations {
         return true;
     }
     
-    public static boolean validateCreditCard(String creditCard){
-        Matcher matcher =  Pattern.compile("[^0-9]").matcher(creditCard);
+    public static boolean validateCreditCard(String creditCard, String scv){
+        boolean valid = true;
+        if(scv.length() == 0 && creditCard.length() == 0) return true;
+        else if(scv.length() == 0 && creditCard.length() != 0){
+            errorScv = "insert secure code";
+            return false;
+        }
+        else if(scv.length() != 0 && creditCard.length() == 0){
+            errorCreditCard = "insert credit Card";
+            return false;
+        }
+        Pattern pattern = Pattern.compile("[^0-9]");
+        Matcher matcher =  pattern.matcher(creditCard);
         if(creditCard.length() != 16){
             errorCreditCard  = "credit card must contain 16 numbers";
-            return false;
+            valid = false;
         }
         else if(matcher.find()){
             errorCreditCard = "credit card must contain only numbers";
-            return false;
+            valid = false;
         }
-        return true;
+        
+        matcher = pattern.matcher(scv);
+        if(matcher.find()){
+            errorScv = "scv must contain only numbers";
+            valid = false;
+        }
+        else{
+            if(scv.length() != 3){
+                errorScv = "scv must contain only 3 numbers";
+            }
+        }
+        
+        
+        return valid;
     }
-    
+    /*
     public static boolean validateScv(String scvTxt){
         try{
             Integer.parseInt(scvTxt);
@@ -92,6 +116,7 @@ public class Validations {
         }
         return true;
     }
+    */
     
     public static void resetErrorLabels(){
         errorName = ""; errorSurname=""; errorPhone="";
