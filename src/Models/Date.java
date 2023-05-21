@@ -11,9 +11,6 @@ import java.time.LocalDateTime;
  * @author picos
  */
 public class Date {
-    public static LocalDateTime getCurrentDay(){
-        return LocalDateTime.now();
-    }
     
     
 }

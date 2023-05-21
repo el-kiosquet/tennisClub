@@ -89,7 +89,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <DatePicker fx:id="calendar" prefHeight="48.0" prefWidth="362.0">
+                        <DatePicker fx:id="calendar" onAction="#changeDay" prefHeight="48.0" prefWidth="362.0">
                            <HBox.margin>
                               <Insets left="40.0" top="40.0" />
                            </HBox.margin></DatePicker>

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Models.CalendarCell;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -71,6 +73,8 @@ public class UserPageController implements Initializable {
     private DatePicker calendar;
     
     private LocalDate today = LocalDate.now();
+    private LocalDate selectedDay = today; //by default, selected day == today
+    
     public int remain = 6;
     @FXML
     private Label label9;
@@ -103,9 +107,10 @@ public class UserPageController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb){     
         Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
         calendar.setValue(today);
+        calendarInitializations();
         try {
             // TODO
             Club club = Club.getInstance();
@@ -195,5 +200,31 @@ public class UserPageController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void changeDay(ActionEvent event) {
+        LocalDate selectedDay = calendar.getValue();
+        
+        try {
+            club = Club.getInstance();
+            List<Booking> bookingsList = club.getForDayBookings(today);
+            for(Booking b : bookingsList){
+                System.out.println(b.getFromTime()); // hour
+                
+            }
+            
+            
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void calendarInitializations(){
+        calendar.setDayCellFactory((picker) -> {return new CalendarCell();});
+        calendar.showWeekNumbersProperty().setValue(false);
+        
     }
 }
