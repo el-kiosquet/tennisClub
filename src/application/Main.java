@@ -16,9 +16,9 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/view/userPage.fxml"));
         Parent root = loader.load();
-        
+        String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
         Scene scene = new Scene(root);
-        
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.setTitle("Tennis Club");
         stage.show();

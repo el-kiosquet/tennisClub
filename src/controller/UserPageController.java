@@ -72,10 +72,6 @@ public class UserPageController implements Initializable {
     private Button logOut;
     private Club club;
     @FXML
-    private Label todayLabel;
-    @FXML
-    private Label selectDaylabel;
-    @FXML
     private DatePicker calendar;
     
     private LocalDate today = LocalDate.now();
@@ -111,12 +107,16 @@ public class UserPageController implements Initializable {
     @FXML
     private GridPane schedule;
     
+    //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb){     
-        Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+    public void initialize(URL url, ResourceBundle rb){  
+        String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
+        
+        Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
         calendar.setValue(today);
         calendarInitializations();
         try {
@@ -216,12 +216,18 @@ public class UserPageController implements Initializable {
         
         try {
             club = Club.getInstance();
-            List<Booking> bookingsList = club.getForDayBookings(today);
-            for(Booking b : bookingsList){
-                System.out.println(b.getFromTime()); // hour
-                
-            }
+            List<Booking> books = club.getForDayBookings(selectedDay);
+            Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
             
+            for(int j = 0; j<labels.length;j++){
+                remain=6;
+                for(int i = 0; i<books.size();i++){
+                    if(books.get(i).getFromTime().equals(LocalTime.of(9+j, 0))) {
+                         remain--;
+                    }
+                }
+                labels[j].setText("There are "+remain+" courts left");
+            } 
             
         } catch (ClubDAOException ex) {
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);

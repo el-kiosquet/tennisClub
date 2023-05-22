@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.24034749034749034" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="857.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
+<SplitPane dividerPositions="0.249743062692703" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="857.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
   <items>
       <VBox prefHeight="926.0" prefWidth="243.0">
          <children>
@@ -62,27 +63,82 @@
                <items>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="153.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/woman1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="17.0" prefWidth="164.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER" translateY="-80.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="153.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/woman1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="17.0" prefWidth="164.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER" translateY="-80.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children></VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="153.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/woman1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="17.0" prefWidth="164.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER" translateY="-80.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="153.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/woman1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="17.0" prefWidth="164.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER" translateY="-80.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="153.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/woman1.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="17.0" prefWidth="164.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER" translateY="-80.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </items>
             </SplitPane>
          </right>
          <bottom>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label fx:id="todayLabel" text="TODAY" />
-                        <Label fx:id="selectDaylabel" text="DAYPicker" />
-                     </children>
-                  </VBox>
-               </children></HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
@@ -96,7 +152,7 @@
                      </children></HBox>
                   <VBox maxHeight="659.0" maxWidth="527.0" minWidth="200.0" prefHeight="657.0" prefWidth="527.0">
                      <children>
-                        <ScrollPane maxWidth="529.0" minWidth="200.0" prefHeight="656.0" prefWidth="400.0" style="-fx-border-color: 000;">
+                        <ScrollPane maxHeight="600.0" maxWidth="529.0" minWidth="200.0" prefHeight="600.0" prefWidth="400.0" style="-fx-border-color: 000;">
                            <content>
                               <GridPane fx:id="schedule" gridLinesVisible="true" maxWidth="527.0" minWidth="200.0" onMouseClicked="#gridClicked" prefHeight="536.0" prefWidth="524.0">
                                  <columnConstraints>
