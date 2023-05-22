@@ -5,6 +5,8 @@
 package controller;
 
 import Models.CalendarCell;
+import Models.Utils;
+import com.sun.javafx.scene.control.LabeledText;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -19,9 +21,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,6 +36,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -102,6 +108,8 @@ public class UserPageController implements Initializable {
     private Label label13;
     @FXML
     private Label label21;
+    @FXML
+    private GridPane schedule;
     
     /**
      * Initializes the controller class.
@@ -226,5 +234,33 @@ public class UserPageController implements Initializable {
         calendar.setDayCellFactory((picker) -> {return new CalendarCell();});
         calendar.showWeekNumbersProperty().setValue(false);
         
+    }
+
+    @FXML
+    private void gridClicked(MouseEvent event) {        
+        //System.out.println("-------");
+        //System.out.println(event.getSource());
+        //System.out.println(event.getTarget());
+        //System.out.println("-------");
+        
+        Object source = event.getSource();
+        EventTarget target = event.getTarget();
+        
+        //System.out.println(GridPane.getRowIndex(source) +" and " + GridPane.getColumnIndex(source));
+        
+        if(target.getClass().equals(label19.getClass())){
+            Label lb = (Label) target;
+            GridPane.getRowIndex(lb);
+            System.out.println(GridPane.getRowIndex(lb));
+            event.consume();
+        }
+        else if(source.getClass().equals(label19.getClass())){
+            Label lb = (Label) source;
+            GridPane.getRowIndex(lb);
+            System.out.println(GridPane.getRowIndex(lb));
+            event.consume();
+        }
+        
+        //event.consume();
     }
 }
