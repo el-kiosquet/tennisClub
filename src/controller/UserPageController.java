@@ -106,6 +106,30 @@ public class UserPageController implements Initializable {
     private Label label21;
     @FXML
     private GridPane schedule;
+    @FXML
+    private Button pista2but;
+    @FXML
+    private ImageView pista2img;
+    @FXML
+    private Button pista3but;
+    @FXML
+    private ImageView pista3img;
+    @FXML
+    private Button pista4but;
+    @FXML
+    private ImageView pista4img;
+    @FXML
+    private Button pista5but;
+    @FXML
+    private ImageView pista5img;
+    @FXML
+    private Button pista6but;
+    @FXML
+    private ImageView pista6img;
+    @FXML
+    private Button pista1but;
+    @FXML
+    private ImageView pista1img;
     
     //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
     
@@ -229,6 +253,7 @@ public class UserPageController implements Initializable {
                 labels[j].setText("There are "+remain+" courts left");
             } 
             
+            
         } catch (ClubDAOException ex) {
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -268,5 +293,30 @@ public class UserPageController implements Initializable {
         }
         
         //event.consume();
+    }
+    
+    private void showCourtsByHour(LocalTime hour){
+        try {
+            club = Club.getInstance();
+            List<Booking> bookings = club.getForDayBookings(selectedDay);
+            for(Booking b : bookings){
+                if(b.getFromTime().equals(hour)){
+                    Court c = b.getCourt();
+                }
+                        
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void ocupied(Court c){
+        //Method to change court image
+    }
+    
+    private void free(Court c){
+        //method to change court image to free
     }
 }
