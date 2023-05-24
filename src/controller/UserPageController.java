@@ -242,6 +242,7 @@ public class UserPageController implements Initializable {
     private void changeDay(ActionEvent event) {
         selectedDay = calendar.getValue();
         refreshGrid();
+        refreshCourtImages();
     }
     
     private void calendarInitializations(){
