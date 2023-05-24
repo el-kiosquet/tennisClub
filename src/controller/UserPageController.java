@@ -7,6 +7,7 @@ package controller;
 import Models.CalendarCell;
 import Models.Utils;
 import com.sun.javafx.scene.control.LabeledText;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -35,6 +36,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -107,29 +109,31 @@ public class UserPageController implements Initializable {
     @FXML
     private GridPane schedule;
     @FXML
-    private Button pista2but;
-    @FXML
     private ImageView pista2img;
-    @FXML
-    private Button pista3but;
     @FXML
     private ImageView pista3img;
     @FXML
-    private Button pista4but;
-    @FXML
     private ImageView pista4img;
-    @FXML
-    private Button pista5but;
     @FXML
     private ImageView pista5img;
     @FXML
-    private Button pista6but;
-    @FXML
     private ImageView pista6img;
     @FXML
-    private Button pista1but;
-    @FXML
     private ImageView pista1img;
+    @FXML
+    private Button pista2;
+    @FXML
+    private Button pista3;
+    @FXML
+    private Button pista4;
+    @FXML
+    private Button pista5;
+    @FXML
+    private Button pista6;
+    @FXML
+    private Button pista1;
+    
+    private LocalTime localHour;
     
     //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
     
@@ -139,7 +143,7 @@ public class UserPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){  
         String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
-        
+        refreshCourtImages();
         Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
         calendar.setValue(today);
         calendarInitializations();
@@ -236,29 +240,8 @@ public class UserPageController implements Initializable {
 
     @FXML
     private void changeDay(ActionEvent event) {
-        LocalDate selectedDay = calendar.getValue();
-        
-        try {
-            club = Club.getInstance();
-            List<Booking> books = club.getForDayBookings(selectedDay);
-            Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
-            
-            for(int j = 0; j<labels.length;j++){
-                remain=6;
-                for(int i = 0; i<books.size();i++){
-                    if(books.get(i).getFromTime().equals(LocalTime.of(9+j, 0))) {
-                         remain--;
-                    }
-                }
-                labels[j].setText("There are "+remain+" courts left");
-            } 
-            
-            
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        selectedDay = calendar.getValue();
+        refreshGrid();
     }
     
     private void calendarInitializations(){
@@ -282,15 +265,22 @@ public class UserPageController implements Initializable {
         if(target.getClass().equals(label19.getClass())){
             Label lb = (Label) target;
             GridPane.getRowIndex(lb);
-            System.out.println(GridPane.getRowIndex(lb));
+            int a = GridPane.getRowIndex(lb);
+            localHour = Utils.toHour(a + 8);
+            refreshGrid();
+            refreshCourtImages();
             event.consume();
         }
         else if(source.getClass().equals(label19.getClass())){
             Label lb = (Label) source;
-            GridPane.getRowIndex(lb);
-            System.out.println(GridPane.getRowIndex(lb));
+            int a = GridPane.getRowIndex(lb);
+            localHour = Utils.toHour(a + 8);
+            refreshGrid();
+            refreshCourtImages();
             event.consume();
         }
+        
+        
         
         //event.consume();
     }
@@ -312,11 +302,107 @@ public class UserPageController implements Initializable {
         }
     }
     
-    private void ocupied(Court c){
-        //Method to change court image
+    
+    private void refreshGrid(){
+        try {
+            club = Club.getInstance();
+            List<Booking> books = club.getForDayBookings(selectedDay);
+            Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+            
+            
+            for(int j = 0; j<labels.length;j++){
+                remain=6;
+                for(int i = 0; i<books.size();i++){
+                    if(books.get(i).getFromTime().equals(LocalTime.of(9+j, 0))) {
+                         remain--;
+                    }
+                }
+                labels[j].setText("There are "+remain+" courts left");
+            } 
+            
+            
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void courtSelected(ActionEvent event) {
+        Button b = (Button) event.getSource();
+        char num = b.getId().charAt(b.getId().length() - 1);
+        String pista = "Pista " + num;
+        System.out.println(pista);
+        bookCourt(pista);
     }
     
-    private void free(Court c){
-        //method to change court image to free
+    
+    private boolean bookCourt(String courtName){
+        try{
+            club = Club.getInstance();
+            Court court = club.getCourt(courtName);
+            //System.out.println("Today: " + today + "\n Made for DAY: " + selectedDay + 
+            //        "\n From hour: " + localHour + "\n Court " + court.getName() + "\n member" + member);
+            
+            //all the information to book a court
+            
+            //if to check is court already booked
+            if(!isBooked(court.getName(), localHour)){
+                LocalDateTime now = LocalDateTime.now();
+                club.registerBooking(now ,selectedDay, localHour, true, court, member);
+                refreshCourtImages();
+                refreshGrid();
+            }
+            //alert for the user ro book the court
+            
+            
+        }catch(Exception e){
+        Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        return false;
+    }
+    
+    private boolean isBooked(String court, LocalTime hour){
+        try{
+            club = Club.getInstance();
+            List<Booking> bookings = club.getCourtBookings(court, selectedDay);
+            for(Booking b : bookings){
+                if(b.getFromTime().equals(hour)) return true;
+            }
+        }catch(Exception e){
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    
+    private void refreshCourtImages(){
+        Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
+        ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
+        if(localHour == null){
+            for(int i = 0; i < buttons.length; i++){
+                buttons[i].setVisible(false);
+                images[i].setVisible(false);
+            }
+        }
+        else{
+            for(int i = 0; i < buttons.length; i++){
+                buttons[i].setVisible(true);
+                images[i].setVisible(true);
+            }
+            for(int i = 1; i <= 6; i++){
+                String court = "Pista " + i;
+                if(isBooked(court, localHour)){
+                    //   /img/
+                    images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png"));
+                }
+                else{
+                    images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "GreenCourt.png"));
+                }
+            
+            }
+        }
     }
 }
