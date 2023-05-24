@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -339,28 +341,45 @@ public class UserPageController implements Initializable {
             //System.out.println("Today: " + today + "\n Made for DAY: " + selectedDay + 
             //        "\n From hour: " + localHour + "\n Court " + court.getName() + "\n member" + member);
             
-            //all the information to book a court
-            
             //if to check is court already booked
-            if(!isBooked(court.getName(), localHour)){
+            if(isBooked(court.getName(), localHour))
+                return false;
+            
+            //alert for the user ro book the court
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Book Court");
+            alert.setHeaderText("Confirm your booking");
+            StringBuilder content = new StringBuilder();
+            content.append("You selected " + courtName + " on "
+                    + selectedDay + " at " + localHour + "\n\n");
+            if ( member.checkHasCreditInfo() ) {
+                content.append("The booking will be automaticaly paid");
+            } else {
+                content.append("ATENTION:\nNo credit card information found on "
+                        + "your acount. \nYou will need to pay when you arrive "
+                        + "at the club");
+            }
+            content.append("\n\n"+"Do you want to book this court?");
+            alert.setContentText(content.toString());
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                //all the information to book a court
                 LocalDateTime now = LocalDateTime.now();
                 club.registerBooking(now ,selectedDay, localHour, true, court, member);
                 refreshCourtImages();
                 refreshGrid();
-            
-            //alert for the user ro book the court
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setTitle("Book Court");
-                alert.setHeaderText("Confirm your booking");
-                alert.setContentText("Here go the details of the reservation");
-                alert.showAndWait();
-
+                Alert bookedCorrectly = new Alert(AlertType.INFORMATION);
+                bookedCorrectly.setHeaderText("");
+                bookedCorrectly.setTitle("Done!");
+                bookedCorrectly.setContentText("Booked court succesfully");
+                bookedCorrectly.show();
             }
+
         }catch(Exception e){
         Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
         }
         
-        return false;
+        return true;
     }
     
     private boolean isBooked(String court, LocalTime hour){
