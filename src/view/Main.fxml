@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
       <VBox prefHeight="479.0" prefWidth="229.0">
          <children>
@@ -36,7 +36,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
-                  <PasswordField fx:id="password" />
+                  <PasswordField fx:id="password" onKeyPressed="#checkForEnter" />
                </children>
                <VBox.margin>
                   <Insets />
