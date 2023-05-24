@@ -5,6 +5,7 @@
 package Models;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -12,12 +13,9 @@ import javafx.scene.layout.GridPane;
  * @author picos
  */
 public class Utils {
-    public static int columnCalc(GridPane grid, double x){
-        int cellWidth = (int) grid.getWidth() / grid.getColumnCount();
-        return (int)(x / cellWidth);
-    }
-    public static int rowCalc(GridPane grid, double y) {
-        int cellHeight = (int) (grid.getHeight() / grid.getRowCount());
-        return (int) (y / cellHeight);
+    
+    
+    public static LocalTime toHour(int hour){
+        return LocalTime.of(hour, 0);
     }
 }
