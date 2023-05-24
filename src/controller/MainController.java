@@ -6,8 +6,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
@@ -106,7 +105,7 @@ public class MainController implements Initializable {
                  Scene scene = new Scene(root);
                  Stage stage = (Stage) login.getScene().getWindow();   //new Stage();
                  stage.setScene(scene);
-                 stage.setTitle("Esta es tu ventana de usuario");
+                 stage.setTitle("Main Overview Page");
                  //stage.initModality(Modality.APPLICATION_MODAL);
                  stage.resizableProperty().set(true);
                  //la ventana se muestra modal
@@ -116,7 +115,7 @@ public class MainController implements Initializable {
             Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Log in Failure");
                 alert.setHeaderText("Information error");
-                alert.setContentText("Incorrect usesname. Change the information and try again");
+                alert.setContentText("Incorrect username. Change the information and try again");
                 alert.showAndWait();
         }
         }catch(Exception e){
@@ -125,6 +124,15 @@ public class MainController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    /** When you press the enter key in the password field
+     * you log in
+     */
+    private void checkForEnter(KeyEvent event) {
+        if( event.getCode().equals( KeyCode.ENTER) )
+            autentication( new ActionEvent() );
     }
     
 }
