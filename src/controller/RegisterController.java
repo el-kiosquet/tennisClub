@@ -73,7 +73,7 @@ public class RegisterController implements Initializable {
     private Member member;
     
     private String[] avatarUrl = new String[14]; //Contains the URLs of the images
-
+    int selectedAvatar = 0;
     
     Club club;
     @FXML
@@ -98,14 +98,14 @@ public class RegisterController implements Initializable {
         registryButton.setOnAction(this::registry);
         avatarSelect.setOnAction(this::avatarChange);
         
-        avatarView.setImage(new Image("\\img\\men3.PNG"));
+        avatarView.setImage(new Image("\\img\\default.PNG"));
         
         // Load the avatarSelector options
         avatarSelect.getItems().add("Default");
-        for ( int i = 1; i < 7; i++ ) {
+        for ( int i = 1; i < 6; i++ ) {
             avatarSelect.getItems().add("Man " + i);
         }
-        for ( int i = 1; i < 8; i++ ) {
+        for ( int i = 1; i < 7; i++ ) {
             avatarSelect.getItems().add("Woman " + i);
         }
         avatarUrl[0] = "default";
@@ -146,7 +146,7 @@ public class RegisterController implements Initializable {
             
         }
         
-        img = null;
+        img = new Image( avatarUrl[selectedAvatar] );
         System.out.println(validUser());
         // if all correct, create member
         
@@ -217,20 +217,10 @@ public class RegisterController implements Initializable {
        The image cant be located
     */
     private void avatarChange(ActionEvent event) {
-        /*
-        int url = 3;
-        try {
-            avatarView.imageProperty().setValue(
-                    new Image( 
-                            new FileInputStream(
-                                    avatarUrl[ url ] ) ) );
-        } catch (Exception e) {e.printStackTrace();}
-
-        */
-        int url = 5;
+        selectedAvatar = avatarSelect.getSelectionModel().getSelectedIndex();
         try {
             avatarView.setImage(
-                    new Image( avatarUrl[url]));
+                    new Image( avatarUrl[selectedAvatar]) );
             
         } catch (Exception e) {e.printStackTrace();}
         
