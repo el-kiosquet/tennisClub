@@ -6,7 +6,6 @@ package controller;
 
 import Models.CalendarCell;
 import Models.Utils;
-import com.sun.javafx.scene.control.LabeledText;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -14,10 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.temporal.WeekFields;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,16 +22,13 @@ import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -354,10 +347,15 @@ public class UserPageController implements Initializable {
                 club.registerBooking(now ,selectedDay, localHour, true, court, member);
                 refreshCourtImages();
                 refreshGrid();
-            }
+            
             //alert for the user ro book the court
-            
-            
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Book Court");
+                alert.setHeaderText("Confirm your booking");
+                alert.setContentText("Here go the details of the reservation");
+                alert.showAndWait();
+
+            }
         }catch(Exception e){
         Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
         }
