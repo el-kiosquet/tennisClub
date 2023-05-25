@@ -61,6 +61,8 @@ public class ModifyPage implements Initializable {
     private Label errorSurname;
     @FXML
     private Label errorPhone;
+    @FXML
+    private Label errorNickname;
 
     /**
      * Initializes the controller class.

@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
    <center>
-      <VBox fillWidth="false" maxWidth="400.0" prefHeight="855.0" prefWidth="489.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <HBox prefHeight="100.0" prefWidth="326.0">
                <children>
@@ -90,10 +90,10 @@
       </VBox>
    </center>
    <right>
-      <HBox BorderPane.alignment="TOP_CENTER">
+      <HBox prefWidth="500.0" BorderPane.alignment="TOP_CENTER">
          <children>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <GridPane alignment="CENTER" maxWidth="600.0" prefHeight="813.0" prefWidth="299.0">
+            <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="813.0" prefWidth="800.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -166,7 +166,7 @@
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="250.0" minWidth="200.0" prefHeight="855.0" prefWidth="200.0">
+            <VBox alignment="TOP_CENTER" maxWidth="250.0" prefHeight="855.0" prefWidth="200.0">
                <children>
                   <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
