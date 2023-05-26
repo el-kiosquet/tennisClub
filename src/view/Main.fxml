@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<BorderPane style="-fx-background-color: lightbrown;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <center>
-      <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" style="-fx-background-color: brown;" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <HBox prefHeight="100.0" prefWidth="326.0">
                <children>
@@ -30,7 +30,7 @@
                   </DatePicker>
                </children>
             </HBox>
-            <GridPane fx:id="schedule" gridLinesVisible="true" maxWidth="400.0" minWidth="200.0" onMouseClicked="#gridClicked" prefHeight="642.0" prefWidth="326.0">
+            <GridPane fx:id="schedule" gridLinesVisible="true" maxWidth="400.0" minWidth="200.0" onMouseClicked="#gridClicked" prefHeight="642.0" prefWidth="326.0" stylesheets="@../Styles/style1.css">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="124.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="419.0" minWidth="10.0" prefWidth="209.0" />
@@ -52,38 +52,41 @@
                   <RowConstraints maxHeight="60.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER" prefHeight="43.0" prefWidth="113.0" text="Horarios" />
-                  <Label alignment="CENTER" prefHeight="88.0" prefWidth="152.0" text="Pistas" GridPane.columnIndex="1" />
-                  <Label fx:id="label9" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="234.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="10:00-11:00" GridPane.rowIndex="2" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="9:00-10:00" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="19:00-20:00" GridPane.rowIndex="11" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="18:00-19:00" GridPane.rowIndex="10" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="17:00-18:00" GridPane.rowIndex="9" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="16:00-17:00" GridPane.rowIndex="8" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="15:00-16:00" GridPane.rowIndex="7" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="14:00-15:00" GridPane.rowIndex="6" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="13:00-14:00" GridPane.rowIndex="5" />
-                  <Label fx:id="label12" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="400.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="12:00-13:00" GridPane.rowIndex="4" />
-                  <Label fx:id="label11" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="385.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="11:00-12:00" GridPane.rowIndex="3" />
-                  <Label fx:id="label10" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="461.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="label20" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="361.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="20:00-21:00" GridPane.rowIndex="12" />
-                  <Label fx:id="label19" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="364.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                  <Label fx:id="label18" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="363.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Label fx:id="label17" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="374.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <Label fx:id="label16" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="371.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label fx:id="label14" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="365.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label fx:id="label13" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="439.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label fx:id="label21" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="402.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="111.0" text="21:00-22:00" GridPane.rowIndex="13" />
-                  <Label fx:id="label15" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="40.0" prefWidth="388.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="120.0" styleClass="text-tittle" text="Horarios" />
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="209.0" styleClass="text-tittle" text="Pistas" GridPane.columnIndex="1" />
+                  <Label fx:id="label9" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="58.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="126.0" styleClass="text-hour" text="10:00-11:00" GridPane.rowIndex="2" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="123.0" styleClass="text-hour" text="9:00-10:00" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="119.0" styleClass="text-hour" text="19:00-20:00" GridPane.rowIndex="11" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="121.0" styleClass="text-hour" text="18:00-19:00" GridPane.rowIndex="10" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="122.0" styleClass="text-hour" text="17:00-18:00" GridPane.rowIndex="9" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="121.0" styleClass="text-hour" text="16:00-17:00" GridPane.rowIndex="8" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="124.0" styleClass="text-hour" text="15:00-16:00" GridPane.rowIndex="7" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="131.0" styleClass="text-hour" text="14:00-15:00" GridPane.rowIndex="6" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="127.0" styleClass="text-hour" text="13:00-14:00" GridPane.rowIndex="5" />
+                  <Label fx:id="label12" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="68.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="124.0" styleClass="text-hour" text="12:00-13:00" GridPane.rowIndex="4" />
+                  <Label fx:id="label11" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="62.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="123.0" styleClass="text-hour" text="11:00-12:00" GridPane.rowIndex="3" />
+                  <Label fx:id="label10" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="82.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="label20" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="67.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="122.0" styleClass="text-hour" text="20:00-21:00" GridPane.rowIndex="12" />
+                  <Label fx:id="label19" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="97.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Label fx:id="label18" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="112.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <Label fx:id="label17" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="97.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <Label fx:id="label16" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="90.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="label14" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="63.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="label13" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="87.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="label21" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="101.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="122.0" styleClass="text-hour" text="21:00-22:00" GridPane.rowIndex="13" />
+                  <Label fx:id="label15" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="76.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
                <padding>
                   <Insets top="30.0" />
                </padding>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
             </GridPane>
          </children>
          <padding>
@@ -94,8 +97,8 @@
    <right>
       <HBox prefWidth="500.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="813.0" prefWidth="800.0">
+            <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-background-color: brown;" />
+            <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="813.0" prefWidth="800.0" style="-fx-background-color: brown;" stylesheets="@../Styles/style1.css">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -108,7 +111,7 @@
                <children>
                   <Button fx:id="pista2" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1">
                      <graphic>
-                        <ImageView fx:id="pista2img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista2img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/BlueCourt.png" />
                            </image>
@@ -117,7 +120,7 @@
                   </Button>
                   <Button fx:id="pista3" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0" GridPane.rowIndex="1">
                      <graphic>
-                        <ImageView fx:id="pista3img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista3img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/RedCourt.png" />
                            </image>
@@ -126,7 +129,7 @@
                   </Button>
                   <Button fx:id="pista4" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <graphic>
-                        <ImageView fx:id="pista4img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista4img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/GreenCourt.png" />
                            </image>
@@ -135,7 +138,7 @@
                   </Button>
                   <Button fx:id="pista5" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0" GridPane.rowIndex="2">
                      <graphic>
-                        <ImageView fx:id="pista5img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista5img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/GreenCourt.png" />
                            </image>
@@ -144,7 +147,7 @@
                   </Button>
                   <Button fx:id="pista6" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <graphic>
-                        <ImageView fx:id="pista6img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista6img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/GreenCourt.png" />
                            </image>
@@ -153,7 +156,7 @@
                   </Button>
                   <Button fx:id="pista1" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0">
                      <graphic>
-                        <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
                            <image>
                               <Image url="@../img/GreenCourt.png" />
                            </image>
@@ -168,7 +171,7 @@
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="479.0" prefWidth="229.0">
+            <VBox prefHeight="479.0" prefWidth="229.0" stylesheets="@../Styles/style1.css">
                <children>
                   <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
@@ -184,7 +187,7 @@
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
                         <TextField fx:id="username" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="74.0703125">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
@@ -198,14 +201,14 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="218.0" prefWidth="240.0" spacing="10.0">
+                  <VBox prefHeight="115.0" prefWidth="240.0" spacing="10.0">
                      <children>
-                        <Button fx:id="login" mnemonicParsing="false" onAction="#autentication" prefHeight="40.0" prefWidth="218.0" text="Log In">
+                        <Button fx:id="login" mnemonicParsing="false" onAction="#autentication" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Log In">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="register" mnemonicParsing="false" onAction="#click" prefHeight="40.0" prefWidth="218.0" text="Register New Account">
+                        <Button fx:id="register" mnemonicParsing="false" onAction="#click" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Register New Account">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -218,6 +221,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </VBox>
+                  <ImageView fitHeight="295.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />

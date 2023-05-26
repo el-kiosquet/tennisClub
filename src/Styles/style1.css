@@ -13,5 +13,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-text-fill: #dddddd;
 }
 */.text-label{
-    -fx-background-color: lightblue;
+    -fx-background-color: white;
+    -fx-text-fill: blue;
+    -fx-border-color: black;
+}
+.text-hour{
+    -fx-background-color: lightgrey;
+}
+.text-tittle{
+    -fx-background-color: grey;
+}
+.myPane{
+    -fx-border-color: black;
+}
+.button-courts{
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 4px;
+    -fx-border-radius: 5px;
+}
+.button-general{
+    -fx-background-color: grey;
+    
 }
