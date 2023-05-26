@@ -16,11 +16,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
@@ -44,6 +48,60 @@ public class MainController implements Initializable {
     private Button login;
     @FXML
     private ImageView img;
+    @FXML
+    private DatePicker calendar;
+    @FXML
+    private GridPane schedule;
+    @FXML
+    private Label label9;
+    @FXML
+    private Label label12;
+    @FXML
+    private Label label11;
+    @FXML
+    private Label label10;
+    @FXML
+    private Label label20;
+    @FXML
+    private Label label19;
+    @FXML
+    private Label label18;
+    @FXML
+    private Label label17;
+    @FXML
+    private Label label16;
+    @FXML
+    private Label label14;
+    @FXML
+    private Label label13;
+    @FXML
+    private Label label21;
+    @FXML
+    private Label label15;
+    @FXML
+    private Button pista2;
+    @FXML
+    private ImageView pista2img;
+    @FXML
+    private Button pista3;
+    @FXML
+    private ImageView pista3img;
+    @FXML
+    private Button pista4;
+    @FXML
+    private ImageView pista4img;
+    @FXML
+    private Button pista5;
+    @FXML
+    private ImageView pista5img;
+    @FXML
+    private Button pista6;
+    @FXML
+    private ImageView pista6img;
+    @FXML
+    private Button pista1;
+    @FXML
+    private ImageView pista1img;
 
 
     /**
@@ -133,6 +191,18 @@ public class MainController implements Initializable {
     private void checkForEnter(KeyEvent event) {
         if( event.getCode().equals( KeyCode.ENTER) )
             autentication( new ActionEvent() );
+    }
+
+    @FXML
+    private void changeDay(ActionEvent event) {
+    }
+
+    @FXML
+    private void gridClicked(MouseEvent event) {
+    }
+
+    @FXML
+    private void courtSelected(ActionEvent event) {
     }
     
 }

@@ -31,8 +31,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -61,10 +64,6 @@ public class UserPageController implements Initializable {
     private Text nick;
     
     private Member member;
-    @FXML
-    private Button booked;
-    @FXML
-    private Button profile;
     @FXML
     private Button logOut;
     private Club club;
@@ -129,6 +128,10 @@ public class UserPageController implements Initializable {
     private Button pista1;
     
     private LocalTime localHour;
+    @FXML
+    private Button booked;
+    @FXML
+    private Button profile;
     
     //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
     
@@ -423,4 +426,5 @@ public class UserPageController implements Initializable {
             }
         }
     }
+
 }
