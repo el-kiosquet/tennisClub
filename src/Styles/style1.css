@@ -12,4 +12,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #ff0000;
     -fx-text-fill: #dddddd;
 }
-*/
+*/.text-label{
+    -fx-background-color: lightblue;
+}
