@@ -431,7 +431,7 @@ public class UserPageController implements Initializable {
         FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/view/YourBookings.fxml"));
         Parent root = miCargador.load();
         
-        YourBookingscontr modifypage = miCargador.getController();
+        YourBookingsController modifypage = miCargador.getController();
         System.out.println(member.getName());
         modifypage.initMember(member);
         

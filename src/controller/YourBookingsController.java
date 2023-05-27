@@ -6,6 +6,8 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -26,7 +28,7 @@ import model.Member;
  *
  * @author porta
  */
-public class YourBookingscontr implements Initializable {
+public class YourBookingsController implements Initializable {
 
     @FXML
     private ListView<Booking> listView;
@@ -47,12 +49,34 @@ public class YourBookingscontr implements Initializable {
         try {
             club = Club.getInstance();
             List<Booking> myBookings = club.getUserBookings(member.getNickName());
-            observable = FXCollections.observableList(myBookings);
+            System.out.println(myBookings.size());
+            List<Booking> newBookings = new ArrayList();
+            for(int i = 0; i<myBookings.size();i++){
+                newBookings.add(myBookings.get(i));
+            }
+            List<Booking> showList= new ArrayList();
+            
+            for(int i = 0; i<10 && !newBookings.isEmpty(); i++){
+                Booking soon = newBookings.get(0);
+                for(int j = 0; j<newBookings.size(); j++){
+                    if(soon.getMadeForDay().compareTo(newBookings.get(j).getMadeForDay())>0){
+                        if(soon.getFromTime().compareTo(newBookings.get(j).getFromTime())>0){
+                        soon = newBookings.get(j);
+                        
+                        }
+                    }
+                }
+                System.out.println("Tamaño: "+newBookings.size());
+                showList.add(soon);
+                int index = newBookings.indexOf(soon);
+                newBookings.remove(index);
+            }
+            observable = FXCollections.observableList(showList);
             listView.setItems(observable);
         } catch (ClubDAOException ex) {
-            Logger.getLogger(YourBookingscontr.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(YourBookingsController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(YourBookingscontr.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(YourBookingsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -67,7 +91,7 @@ class BookingListCell extends ListCell<Booking>{
         if(t==null || bln){
             setText(null);
         }else{
-            setText("Reservada la pista x el día " +t.getMadeForDay()  );
+            setText("Reservada la pista x el día " +t.getMadeForDay() + " a las " + t.getFromTime() );
         }
     }
     
