@@ -220,7 +220,6 @@ public class UserPageController implements Initializable {
         System.out.println(LocalDateTime.now().toString() + " , " + ld.toString());
         }
 
-    @FXML
     private void booking(ActionEvent event) {
         try {
             pruebas();
@@ -425,6 +424,26 @@ public class UserPageController implements Initializable {
             
             }
         }
+    }
+
+    @FXML
+    private void showMyBookings(ActionEvent event) throws IOException {
+        FXMLLoader miCargador = new FXMLLoader(getClass().getResource("/view/YourBookings.fxml"));
+        Parent root = miCargador.load();
+        
+        YourBookingscontr modifypage = miCargador.getController();
+        System.out.println(member.getName());
+        modifypage.initMember(member);
+        
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Esta es tu ventana de usuario");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.resizableProperty().set(false);
+                 //la ventana se muestra modal
+        stage.showAndWait();
+        
     }
 
 }
