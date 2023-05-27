@@ -17,7 +17,7 @@ public class Main extends Application {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/view/Main.fxml"));
         Parent root = loader.load();
         String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1200, 850);
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.setTitle("Tennis Club");

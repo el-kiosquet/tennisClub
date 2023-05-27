@@ -200,7 +200,7 @@ public class UserPageController implements Initializable {
         FXMLLoader(getClass().getResource("/view/Main.fxml"));
         Parent root = loader.load();
        
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, logOut.getScene().getWidth(), logOut.getScene().getHeight());
         Stage stage = (Stage) logOut.getScene().getWindow();
         stage.setScene(scene);
         stage.setTitle("Esta es tu ventana de usuario");
