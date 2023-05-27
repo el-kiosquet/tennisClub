@@ -9,12 +9,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane style="-fx-background-color: lightbrown;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
@@ -185,8 +187,8 @@
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
-                        <TextField fx:id="username" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" />
+                        <TextField fx:id="username" onKeyPressed="#checkForEnter" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="74.0703125">
                            <VBox.margin>
                               <Insets top="5.0" />
@@ -201,7 +203,7 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="115.0" prefWidth="240.0" spacing="10.0">
+                  <VBox alignment="CENTER" prefHeight="115.0" prefWidth="240.0" spacing="10.0">
                      <children>
                         <Button fx:id="login" mnemonicParsing="false" onAction="#autentication" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Log In">
                            <VBox.margin>
@@ -228,4 +230,15 @@
          </children>
       </HBox>
    </left>
+   <top>
+      <AnchorPane prefHeight="0.0" prefWidth="1146.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" text="ClubName">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

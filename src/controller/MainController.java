@@ -127,7 +127,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+       calendar.setValue(today);
+       calendar.setEditable(false);
        calendarInitializations();
        String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
        refreshCourtImages();
@@ -185,7 +186,7 @@ public class MainController implements Initializable {
                 System.out.println(member.getName());
                 userpage.initMem(member);
                 
-                 Scene scene = new Scene(root);
+                 Scene scene = new Scene(root, login.getScene().getWidth(), login.getScene().getHeight());
                  Stage stage = (Stage) login.getScene().getWindow();   //new Stage();
                  stage.setScene(scene);
                  stage.setTitle("Main Overview Page");
@@ -214,8 +215,14 @@ public class MainController implements Initializable {
      * you log in
      */
     private void checkForEnter(KeyEvent event) {
-        if( event.getCode().equals( KeyCode.ENTER) )
-            autentication( new ActionEvent() );
+        if( event.getCode().equals( KeyCode.ENTER) ){
+            TextField t = (TextField) event.getSource();
+            if(t.getId().equals("username")){
+            password.requestFocus();
+            }
+            else autentication( new ActionEvent() );
+        }
+            
     }
 
     
