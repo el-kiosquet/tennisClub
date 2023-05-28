@@ -403,6 +403,7 @@ public class UserPageController implements Initializable {
                 alert.showAndWait();
             }else{
             //alert for the user ro book the court
+            boolean paid = false;
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Book Court");
             alert.setHeaderText("Confirm your booking");
@@ -411,10 +412,12 @@ public class UserPageController implements Initializable {
                     + selectedDay + " at " + localHour + "\n\n");
                 if ( member.checkHasCreditInfo() ) {
                     content.append("The booking will be automaticaly paid");
+                    paid = true;
                 } else {
-                        content.append("ATENTION:\nNo credit card information found on "
-                            + "your acount. \nYou will need to pay when you arrive "
-                            + "at the club");
+                    content.append("ATENTION:\nNo credit card information found on "
+                        + "your acount. \nYou will need to pay when you arrive "
+                        + "at the club");
+                    paid = false;
                 }
                 content.append("\n\n"+"Do you want to book this court?");
                 alert.setContentText(content.toString());
@@ -422,7 +425,7 @@ public class UserPageController implements Initializable {
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     //all the information to book a court
                     LocalDateTime now = LocalDateTime.now();
-                    club.registerBooking(now ,selectedDay, localHour, true, court, member);
+                    club.registerBooking(now ,selectedDay, localHour, paid, court, member);
                     refreshCourtImages();
                     refreshGrid();
                     Alert bookedCorrectly = new Alert(AlertType.INFORMATION);
