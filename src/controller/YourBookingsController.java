@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import model.Booking;
@@ -36,12 +37,15 @@ public class YourBookingsController implements Initializable {
     private ObservableList observable;
     private Member member;
     private LocalDateTime today = LocalDateTime.now();
+    @FXML
+    private Button cancelBooking;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listView.setCellFactory(c-> new BookingListCell());
+        cancelBooking.disableProperty().bind( listView.focusedProperty().not() );
         
     } 
     void initMember(Member user){
@@ -84,6 +88,14 @@ public class YourBookingsController implements Initializable {
             Logger.getLogger(YourBookingsController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    /** Checks if the cancelation can be done be the criterium of
+     * the club ( 24h of anticipation )
+     * @return true if the cancelation can be done, false otherwise
+     */
+    boolean checkValidCancel() {
+        return false;
     }
     
 }
