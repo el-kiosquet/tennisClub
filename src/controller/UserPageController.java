@@ -70,8 +70,8 @@ public class UserPageController implements Initializable {
     @FXML
     private DatePicker calendar;
     
-    private LocalDate today = LocalDate.now();
-    private LocalDate selectedDay = today; //by default, selected day == today
+    private LocalDateTime today = LocalDateTime.now();
+    private LocalDate selectedDay = today.toLocalDate(); //by default, selected day == today
     
     public int remain = 6;
     @FXML
@@ -162,12 +162,12 @@ public class UserPageController implements Initializable {
         refreshCourtImages();
         
         Label []labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
-        calendar.setValue(today);
+        calendar.setValue(today.toLocalDate());
         calendarInitializations();
         try {
             // TODO
             club = Club.getInstance();
-            List<Booking> books = club.getForDayBookings(today);
+            List<Booking> books = club.getForDayBookings(today.toLocalDate());
             
             for(int j = 0; j<labels.length;j++){
                 remain=6;
@@ -368,7 +368,14 @@ public class UserPageController implements Initializable {
             //if to check is court already booked
             if(isBooked(court.getName(), localHour) != null)
                 return false;
-            
+            if(localHour.compareTo(today.toLocalTime())<0){
+                System.out.println("no puedes");
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Exception dialog");
+                alert.setHeaderText("You can't book this court");
+                alert.setContentText("You are trying to book a court in the past, it isn't possible");
+                alert.showAndWait();
+            }else{
             //alert for the user ro book the court
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Book Court");
@@ -376,34 +383,36 @@ public class UserPageController implements Initializable {
             StringBuilder content = new StringBuilder();
             content.append("You selected " + courtName + " on "
                     + selectedDay + " at " + localHour + "\n\n");
-            if ( member.checkHasCreditInfo() ) {
-                content.append("The booking will be automaticaly paid");
-            } else {
-                content.append("ATENTION:\nNo credit card information found on "
-                        + "your acount. \nYou will need to pay when you arrive "
-                        + "at the club");
-            }
-            content.append("\n\n"+"Do you want to book this court?");
-            alert.setContentText(content.toString());
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == ButtonType.OK) {
-                //all the information to book a court
-                LocalDateTime now = LocalDateTime.now();
-                club.registerBooking(now ,selectedDay, localHour, true, court, member);
-                refreshCourtImages();
-                refreshGrid();
-                Alert bookedCorrectly = new Alert(AlertType.INFORMATION);
-                bookedCorrectly.setHeaderText("");
-                bookedCorrectly.setTitle("Done!");
-                bookedCorrectly.setContentText("Booked court succesfully");
-                bookedCorrectly.show();
+                if ( member.checkHasCreditInfo() ) {
+                    content.append("The booking will be automaticaly paid");
+                } else {
+                        content.append("ATENTION:\nNo credit card information found on "
+                            + "your acount. \nYou will need to pay when you arrive "
+                            + "at the club");
+                }
+                content.append("\n\n"+"Do you want to book this court?");
+                alert.setContentText(content.toString());
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    //all the information to book a court
+                    LocalDateTime now = LocalDateTime.now();
+                    club.registerBooking(now ,selectedDay, localHour, true, court, member);
+                    refreshCourtImages();
+                    refreshGrid();
+                    Alert bookedCorrectly = new Alert(AlertType.INFORMATION);
+                    bookedCorrectly.setHeaderText("");
+                    bookedCorrectly.setTitle("Done!");
+                    bookedCorrectly.setContentText("Booked court succesfully");
+                    bookedCorrectly.show();
+                }
             }
 
-        }catch(Exception e){
-        Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
-        }
+            }catch(Exception e){
+            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
+            }
         
-        return true;
+            return true;
+        
     }
     
     private Member isBooked(String court, LocalTime hour){
