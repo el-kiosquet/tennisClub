@@ -5,6 +5,7 @@
 package controller;
 
 import Models.Validations;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -13,8 +14,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Member;
 
@@ -63,6 +67,13 @@ public class ModifyPage implements Initializable {
     private Label errorPhone;
     @FXML
     private Label errorNickname;
+    @FXML
+    private ImageView avatarView;
+    @FXML
+    private ChoiceBox<String> avatarSelect;
+    
+    private String[] avatarUrl = new String[14]; //Contains the URLs of the images
+    int selectedAvatar = 0;
 
     /**
      * Initializes the controller class.
@@ -70,12 +81,36 @@ public class ModifyPage implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        avatarSelect.setOnAction(this::avatarChange);
+                
+        // Load the avatarSelector options
+        avatarSelect.getItems().add("Default");
+        for ( int i = 1; i < 6; i++ ) {
+            avatarSelect.getItems().add("Man " + i);
+        }
+        for ( int i = 1; i < 7; i++ ) {
+            avatarSelect.getItems().add("Woman " + i);
+        }
+        avatarUrl[0] = "default";
+        for(int i = 1; i < 6; i++) {
+            avatarUrl[i] = "men" + (i);
+        }
+        for(int i = 6; i < 14; i++) {
+            avatarUrl[i] = "woman" + (i-5);
+        }
+        for ( int i = 0; i < avatarUrl.length; i++ ) {
+            avatarUrl[i] = File.separator+"img"+File.separator+avatarUrl[i]+".PNG";
+        }
        
     }    
 
     @FXML
     private void registry(ActionEvent event) {
-        System.out.println(isValid());
+        boolean isValid = isValid();
+        System.out.println(isValid);
+        if (isValid) {
+            member.setImage(new Image( avatarUrl[selectedAvatar] ) );
+        }
         
     }
     
@@ -89,6 +124,8 @@ public class ModifyPage implements Initializable {
         textPhone.setText(member.getTelephone());
         textCreditCard.setText(member.getCreditCard());
         textSCV.setText(""+member.getSvc());
+        avatarView.setImage( member.getImage() );
+
         
     }
     
@@ -127,5 +164,15 @@ public class ModifyPage implements Initializable {
     private void cancelAct(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+    }
+    
+    private void avatarChange(ActionEvent event) {
+        selectedAvatar = avatarSelect.getSelectionModel().getSelectedIndex();
+        try {
+            avatarView.setImage(
+                    new Image( avatarUrl[selectedAvatar]) );
+            
+        } catch (Exception e) {e.printStackTrace();}
+        
     }
 }
