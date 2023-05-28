@@ -236,6 +236,7 @@ public class UserPageController implements Initializable {
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal
         stage.showAndWait();
+        img.setImage(member.getImage()); //Refresh avatar in case changes where made
     }
 
     @FXML
