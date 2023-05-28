@@ -115,6 +115,11 @@ public class MainController implements Initializable {
     private Button pista1;
     @FXML
     private ImageView pista1img;
+    
+    //private Member member= null;
+    //Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+    //Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
+    //ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
 
    private LocalDate today = LocalDate.now();
    private LocalDate selectedDay = today; //by default, selected day == today
@@ -237,6 +242,7 @@ public class MainController implements Initializable {
         selectedDay = calendar.getValue();
         refreshGrid();
         refreshCourtImages();
+
     }
     
     private void calendarInitializations(){
@@ -264,6 +270,7 @@ public class MainController implements Initializable {
             localHour = Utils.toHour(a + 8);
             refreshGrid();
             refreshCourtImages();
+            
             event.consume();
         }
         else if(source.getClass().equals(label19.getClass())){
@@ -272,6 +279,7 @@ public class MainController implements Initializable {
             localHour = Utils.toHour(a + 8);
             refreshGrid();
             refreshCourtImages();
+
             event.consume();
         }
         

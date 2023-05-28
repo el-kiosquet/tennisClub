@@ -132,6 +132,24 @@ public class UserPageController implements Initializable {
     private Button booked;
     @FXML
     private Button profile;
+    @FXML
+    private Label pista1label;
+    @FXML
+    private Label pista3label;
+    @FXML
+    private Label pista2label;
+    @FXML
+    private Label pista4label;
+    @FXML
+    private Label pista5label;
+    @FXML
+    private Label pista6label;
+    
+           
+    //Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
+    //ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
+    //Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
+    
     
     //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
     
@@ -142,12 +160,13 @@ public class UserPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){  
         String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
         refreshCourtImages();
-        Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
+        
+        Label []labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
         calendar.setValue(today);
         calendarInitializations();
         try {
             // TODO
-            Club club = Club.getInstance();
+            club = Club.getInstance();
             List<Booking> books = club.getForDayBookings(today);
             
             for(int j = 0; j<labels.length;j++){
@@ -171,6 +190,7 @@ public class UserPageController implements Initializable {
     public void initMem(Member mem){
         member=mem;
         nick.setText(member.getNickName());
+        img.setImage(member.getImage());
     }
 
     @FXML
@@ -238,6 +258,7 @@ public class UserPageController implements Initializable {
     @FXML
     private void changeDay(ActionEvent event) {
         selectedDay = calendar.getValue();
+        
         refreshGrid();
         refreshCourtImages();
     }
@@ -267,6 +288,7 @@ public class UserPageController implements Initializable {
             localHour = Utils.toHour(a + 8);
             refreshGrid();
             refreshCourtImages();
+            
             event.consume();
         }
         else if(source.getClass().equals(label19.getClass())){
@@ -344,7 +366,7 @@ public class UserPageController implements Initializable {
             //        "\n From hour: " + localHour + "\n Court " + court.getName() + "\n member" + member);
             
             //if to check is court already booked
-            if(isBooked(court.getName(), localHour))
+            if(isBooked(court.getName(), localHour) != null)
                 return false;
             
             //alert for the user ro book the court
@@ -384,21 +406,22 @@ public class UserPageController implements Initializable {
         return true;
     }
     
-    private boolean isBooked(String court, LocalTime hour){
+    private Member isBooked(String court, LocalTime hour){
         try{
             club = Club.getInstance();
             List<Booking> bookings = club.getCourtBookings(court, selectedDay);
             for(Booking b : bookings){
-                if(b.getFromTime().equals(hour)) return true;
+                if(b.getFromTime().equals(hour)) return b.getMember();
             }
         }catch(Exception e){
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
         }
-        return false;
+        return null;
     }
     
     
     private void refreshCourtImages(){
+        Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
         Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
         ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
         if(localHour == null){
@@ -414,12 +437,23 @@ public class UserPageController implements Initializable {
             }
             for(int i = 1; i <= 6; i++){
                 String court = "Pista " + i;
-                if(isBooked(court, localHour)){
-                    //   /img/
-                    images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png"));
+                Member m = isBooked(court, localHour);
+                if( m != null ){
+                    if(m == member){
+                        images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "BlueCourt.png"));
+                        nickPistas[i - 1].setVisible(true);
+                        nickPistas[i - 1].setText("yours");
+                    }
+                    else{
+                        images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png")); 
+                        nickPistas[i - 1].setVisible(true);
+                        nickPistas[i - 1].setText(m.getNickName());
+                    }
+                    
                 }
                 else{
                     images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "GreenCourt.png"));
+                    nickPistas[i - 1].setVisible(false);
                 }
             
             }
