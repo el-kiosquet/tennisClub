@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -388,18 +389,70 @@ public class UserPageController implements Initializable {
         try{
             club = Club.getInstance();
             Court court = club.getCourt(courtName);
+            boolean repetido = false;
+            boolean consecutivo = false;
+            List<Booking> myBookings = club.getUserBookings(member.getNickName());
+            List<LocalTime> consecutivas = new ArrayList();
+            
+            for(int i=0; i<myBookings.size();i++){
+                Booking check = myBookings.get(i);
+                if(selectedDay.compareTo(check.getMadeForDay())==0 && localHour.compareTo(check.getFromTime())==0){
+                    repetido = true;
+                }
+                if(check.getCourt().equals(court)  &&  selectedDay.compareTo(check.getMadeForDay())==0){
+                    consecutivas.add(check.getFromTime()); ////lista con todas las horas en las que tiene esta pista seleccionada
+                }
+            }
+            boolean prev = false;
+            boolean next = false;
+            for(int i=0;i<consecutivas.size();i++){
+                if(consecutivas.get(i).equals(localHour.plusHours(1))){
+                    next=true;
+                }else if(consecutivas.get(i).equals(localHour.minusHours(1))){
+                    prev = true;
+                }
+            } 
+            
+            if(consecutivas.size()>=2){
+                if(prev && next){
+                    consecutivo=true;
+                }else if(prev){
+                    for(int i=0;i<consecutivas.size();i++){
+                        if(consecutivas.get(i).equals(localHour.minusHours(2))){
+                            consecutivo=true;
+                        }
+                    }
+                }else if(next){
+                    for(int i=0;i<consecutivas.size();i++){
+                        if(consecutivas.get(i).equals(localHour.plusHours(2))){
+                            consecutivo=true;
+                        }
+                    }
+                }
+            }
             //System.out.println("Today: " + today + "\n Made for DAY: " + selectedDay + 
             //        "\n From hour: " + localHour + "\n Court " + court.getName() + "\n member" + member);
             
             //if to check is court already booked
             if(isBooked(court.getName(), localHour) != null)
                 return false;
-            if(localHour.compareTo(today.toLocalTime())<0){
-                System.out.println("no puedes");
+            if(selectedDay.compareTo(today.toLocalDate())<0 && localHour.compareTo(today.toLocalTime())<0){         /// if para comprobar que no estás guardando en el pasado
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Exception dialog");
                 alert.setHeaderText("You can't book this court");
                 alert.setContentText("You are trying to book a court in the past, it isn't possible");
+                alert.showAndWait();
+            }else if(repetido){           ///if para saber si no has reservado otra pista a esa misma hora
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Exception dialog");
+                alert.setHeaderText("You can't book this court");
+                alert.setContentText("You have already booked a court a this hour, you can't book two courts at the same time");
+                alert.showAndWait();
+            }else if(consecutivo){         ///if para saber si has reservado más de dos horas consecutivas
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Exception dialog");
+                alert.setHeaderText("You can't book this court");
+                alert.setContentText("You have already booked this court two consecutive hours, you can't book the same court more than two consecutive hours");
                 alert.showAndWait();
             }else{
             //alert for the user ro book the court
