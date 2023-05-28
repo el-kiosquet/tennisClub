@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -99,66 +100,144 @@
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="400.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="400.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="pista2" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1">
-                     <graphic>
-                        <ImageView fx:id="pista2img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/BlueCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="pista3" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fx:id="pista3img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/RedCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="pista4" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <graphic>
-                        <ImageView fx:id="pista4img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/GreenCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="pista5" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0" GridPane.rowIndex="2">
-                     <graphic>
-                        <ImageView fx:id="pista5img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/GreenCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="pista6" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <graphic>
-                        <ImageView fx:id="pista6img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/GreenCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="pista1" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0" rotate="90.0" translateX="-30.0">
-                     <graphic>
-                        <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/GreenCourt.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="pista1" maxWidth="204.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="130.0" prefWidth="204.0">
+                           <graphic>
+                              <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/GreenCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <Button fx:id="pista3" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
+                           <graphic>
+                              <ImageView fx:id="pista3img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/RedCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                           <VBox.margin>
+                              <Insets right="15.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Button fx:id="pista2" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
+                           <graphic>
+                              <ImageView fx:id="pista2img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/BlueCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Button fx:id="pista4" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
+                           <graphic>
+                              <ImageView fx:id="pista4img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/GreenCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="pista5" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
+                           <graphic>
+                              <ImageView fx:id="pista5img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/GreenCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="pista6" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
+                           <graphic>
+                              <ImageView fx:id="pista6img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/GreenCourt.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Pane prefHeight="105.0" prefWidth="224.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
                </children>
+               <HBox.margin>
+                  <Insets left="20.0" top="50.0" />
+               </HBox.margin>
             </GridPane>
          </children>
       </HBox>
