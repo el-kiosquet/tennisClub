@@ -161,6 +161,18 @@ public class UserPageController implements Initializable {
     //Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
     //ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
     //Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
+    @FXML
+    private ImageView pista1userImg;
+    @FXML
+    private ImageView pista3userImg;
+    @FXML
+    private ImageView pista2userImg;
+    @FXML
+    private ImageView pista4userImg;
+    @FXML
+    private ImageView pista5userImg;
+    @FXML
+    private ImageView pista6userImg;
     
     
     //private Label[] labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
@@ -446,6 +458,7 @@ public class UserPageController implements Initializable {
         Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
         Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
         ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
+        ImageView []imgUserPistas = {pista1userImg, pista2userImg, pista3userImg, pista4userImg, pista5userImg, pista6userImg};
         if(localHour == null){
             for(int i = 0; i < buttons.length; i++){
                 buttons[i].setVisible(false);
@@ -465,17 +478,22 @@ public class UserPageController implements Initializable {
                         images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "BlueCourt.png"));
                         nickPistas[i - 1].setVisible(true);
                         nickPistas[i - 1].setText("yours");
+                        imgUserPistas[i - 1].setVisible(true);
+                        imgUserPistas[i - 1].setImage(m.getImage());
                     }
                     else{
                         images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png")); 
                         nickPistas[i - 1].setVisible(true);
                         nickPistas[i - 1].setText(m.getNickName());
+                        imgUserPistas[i - 1].setVisible(true);
+                        imgUserPistas[i - 1].setImage(m.getImage());
                     }
                     
                 }
                 else{
                     images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "GreenCourt.png"));
                     nickPistas[i - 1].setVisible(false);
+                    imgUserPistas[i - 1].setVisible(false);
                 }
             
             }
@@ -505,10 +523,12 @@ public class UserPageController implements Initializable {
     private void showPistasLabels(boolean show){
         Label [] namePistas = {pista1name, pista2name, pista3name, pista4name, pista5name, pista6name}; 
         Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
+        ImageView []imgPistas = {pista1img, pista2img, pista3img, pista4img, pista5img, pista6img};
         try{
             Club club = Club.getInstance();
             List<Court> courts = club.getCourts();
             for(int i = 0; i < courts.size(); i++){
+                imgPistas[i].setVisible(show);
                 namePistas[i].setText(courts.get(i).getName());
                 namePistas[i].setVisible(show);
                 nickPistas[i].setVisible(show);
