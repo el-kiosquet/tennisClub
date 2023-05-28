@@ -144,8 +144,20 @@ public class UserPageController implements Initializable {
     private Label pista5label;
     @FXML
     private Label pista6label;
+    @FXML
+    private Label pista1name;
+    @FXML
+    private Label pista3name;
+    @FXML
+    private Label pista2name;
+    @FXML
+    private Label pista4name;
+    @FXML
+    private Label pista5name;
+    @FXML
+    private Label pista6name;
     
-           
+    //Label [] namePistas = {pista1name, pista2name, pista3name, pista4name, pista5name, pista6name};       
     //Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
     //ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
     //Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
@@ -160,7 +172,7 @@ public class UserPageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){  
         String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
         refreshCourtImages();
-        
+        showPistasLabels(false);
         Label []labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
         calendar.setValue(today.toLocalDate());
         calendarInitializations();
@@ -270,7 +282,8 @@ public class UserPageController implements Initializable {
     }
 
     @FXML
-    private void gridClicked(MouseEvent event) {        
+    private void gridClicked(MouseEvent event) {  
+        showPistasLabels(true);
         //System.out.println("-------");
         //System.out.println(event.getSource());
         //System.out.println(event.getTarget());
@@ -486,6 +499,23 @@ public class UserPageController implements Initializable {
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal
         stage.showAndWait();
+        
+    }
+    
+    private void showPistasLabels(boolean show){
+        Label [] namePistas = {pista1name, pista2name, pista3name, pista4name, pista5name, pista6name}; 
+        Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
+        try{
+            Club club = Club.getInstance();
+            List<Court> courts = club.getCourts();
+            for(int i = 0; i < courts.size(); i++){
+                namePistas[i].setText(courts.get(i).getName());
+                namePistas[i].setVisible(show);
+                nickPistas[i].setVisible(show);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         
     }
 
