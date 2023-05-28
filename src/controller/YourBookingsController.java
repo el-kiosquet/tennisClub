@@ -35,6 +35,7 @@ public class YourBookingsController implements Initializable {
     
     private ObservableList observable;
     private Member member;
+    private LocalDateTime today = LocalDateTime.now();
     /**
      * Initializes the controller class.
      */
@@ -52,7 +53,11 @@ public class YourBookingsController implements Initializable {
             System.out.println(myBookings.size());
             List<Booking> newBookings = new ArrayList();
             for(int i = 0; i<myBookings.size();i++){
-                newBookings.add(myBookings.get(i));
+                if(today.toLocalDate().compareTo(myBookings.get(i).getMadeForDay())<=0){
+                    if(today.toLocalTime().compareTo(myBookings.get(i).getFromTime())<=0){
+                        newBookings.add(myBookings.get(i));
+                    }
+                }
             }
             List<Booking> showList= new ArrayList();
             
