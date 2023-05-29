@@ -617,7 +617,7 @@ public class UserPageController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Your bookings");
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.resizableProperty().set(false);
+        stage.resizableProperty().set(true);
                  //la ventana se muestra modal
         stage.showAndWait();
         refreshCourtImages();
