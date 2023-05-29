@@ -75,6 +75,7 @@ public class ModifyPage implements Initializable {
     
     private String[] avatarUrl = new String[14]; //Contains the URLs of the images
     int selectedAvatar = 0;
+    Image userAvatar = null;
 
     /**
      * Initializes the controller class.
@@ -110,7 +111,7 @@ public class ModifyPage implements Initializable {
         boolean isValid = isValid();
         System.out.println(isValid);
         if (isValid) {
-            member.setImage(new Image( avatarUrl[selectedAvatar] ) );
+            member.setImage( userAvatar );
             member.setName(textName.getText());
             member.setSurname(textSurname.getText());
             member.setPassword(textPassword.getText());
@@ -148,6 +149,7 @@ public class ModifyPage implements Initializable {
         }
         
         avatarView.setImage( member.getImage() );
+        userAvatar = member.getImage();
 
         
     }
@@ -194,6 +196,7 @@ public class ModifyPage implements Initializable {
         try {
             avatarView.setImage(
                     new Image( avatarUrl[selectedAvatar]) );
+            userAvatar = new Image ( avatarUrl[selectedAvatar] );
             
         } catch (Exception e) {e.printStackTrace();}
         
