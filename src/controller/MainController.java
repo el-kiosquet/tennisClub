@@ -133,6 +133,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+       
        calendar.setValue(today);
        calendar.setEditable(false);
        calendarInitializations();
@@ -142,6 +143,7 @@ public class MainController implements Initializable {
         try{
         Club club = Club.getInstance();
         List<Member> list = club.getMembers();
+        
         for(int i=0; i<list.size(); i++){
             System.out.println(list.get(i).getNickName() +" "+ list.get(i).getPassword());
         }

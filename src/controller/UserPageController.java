@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +31,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -386,9 +389,45 @@ public class UserPageController implements Initializable {
     private void courtSelected(ActionEvent event) {
         Button b = (Button) event.getSource();
         char num = b.getId().charAt(b.getId().length() - 1);
-        String pista = "Pista " + num;
-        System.out.println(pista);
-        bookCourt(pista);
+        String court = "Pista " + num;
+        Booking booking = isAvailable(court);
+        if(booking != null){
+            if(booking.getMember().equals(member)){
+                booking.getPaid();
+                String paid = booking.getPaid() ? "yes" : "no";
+                // cancel and more info about court
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("booking info");
+                alert.setContentText("you have booked court " + num + 
+                        "\n  paid: " + paid + 
+                        "\n hour and day: " + booking.getMadeForDay().toString() 
+                        + " : " + booking.getFromTime().toString()); 
+                
+                ButtonType cancel = new ButtonType("Cancel Booking");
+                alert.getButtonTypes().add(cancel);
+                Optional <ButtonType> op = alert.showAndWait();
+                
+                if(op.get().equals(cancel)){
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("");
+                    //cancel booking
+                    if(cancelBooking(booking)){ 
+                    //cancelBooking() = true if booking cancelled
+                        alert.setContentText("court cancelled");
+                    }
+                    else{
+                        alert.setContentText("alert cannot be cancelled within 24 hours anticipation");
+                    }
+                    alert.show();
+                    refreshGrid();
+                    refreshCourtImages();
+                }
+            }
+            else{
+                // alert message, this court is already booked
+            }
+        }
+        else bookCourt(court);
     }
     
     
@@ -405,6 +444,7 @@ public class UserPageController implements Initializable {
                 Booking check = myBookings.get(i);
                 if(selectedDay.compareTo(check.getMadeForDay())==0 && localHour.compareTo(check.getFromTime())==0){
                     repetido = true;
+                    System.out.println("repe");
                 }
                 if(check.getCourt().equals(court)  &&  selectedDay.compareTo(check.getMadeForDay())==0){
                     consecutivas.add(check.getFromTime()); ////lista con todas las horas en las que tiene esta pista seleccionada
@@ -581,6 +621,7 @@ public class UserPageController implements Initializable {
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal
         stage.showAndWait();
+        refreshCourtImages();
         
     }
     
@@ -601,6 +642,36 @@ public class UserPageController implements Initializable {
             System.out.println(e.getMessage());
         }
         
+    }
+    
+    // return null is the court is available, else return booking
+    private Booking isAvailable(String court){
+        try{
+            club = Club.getInstance();
+            List<Booking> list = club.getCourtBookings(court, selectedDay);
+            for(Booking booking : list){
+                if(booking.getFromTime().equals(localHour)) {
+                    return booking;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+    
+    private boolean cancelBooking(Booking booking){
+        LocalDate date = booking.getMadeForDay();
+        LocalDateTime book = date.atTime(booking.getFromTime());
+        if(book.compareTo(today.plusHours(24)) > 0){
+            try{
+            club = Club.getInstance();
+            club.removeBooking(booking);
+            return true;
+            }catch(Exception e){System.err.println(e.getMessage());}               
+        }
+        return false;
     }
 
 }
