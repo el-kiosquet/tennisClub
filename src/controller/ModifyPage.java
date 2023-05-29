@@ -127,6 +127,8 @@ public class ModifyPage implements Initializable {
            changedCorrectly.setTitle("Done!");
            changedCorrectly.setContentText("Your data has been modified");
            changedCorrectly.show();
+           Stage st = (Stage) modifyButton.getScene().getWindow();
+           st.close();
             
         }
         

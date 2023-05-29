@@ -66,11 +66,16 @@ public class YourBookingsController implements Initializable {
             List<Booking> myBookings = club.getUserBookings(member.getNickName());
             System.out.println(myBookings.size());
             List<Booking> newBookings = new ArrayList();
+            
+            
+            //if(book.compareTo(today.plusHours(24)) > 0){
+            
             for(int i = 0; i<myBookings.size();i++){
-                if(today.toLocalDate().compareTo(myBookings.get(i).getMadeForDay())<=0){
-                    if(today.toLocalTime().compareTo(myBookings.get(i).getFromTime())<=0){
+                LocalDate date = myBookings.get(i).getMadeForDay();
+                LocalDateTime book = date.atTime(myBookings.get(i).getFromTime());
+                
+                if(book.compareTo(today) > 0){
                         newBookings.add(myBookings.get(i));
-                    }
                 }
             }
             List<Booking> showList= new ArrayList();
@@ -111,6 +116,7 @@ public class YourBookingsController implements Initializable {
     @FXML
     private void deleteBooking(ActionEvent event) {
         Booking booking = listView.getFocusModel().getFocusedItem();
+        /*
         if ( booking.getBookingDate().minus(24, ChronoUnit.HOURS).compareTo(ChronoLocalDateTime.from(LocalDateTime.now())) < 0 ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Unable to delete booking");
@@ -136,13 +142,37 @@ public class YourBookingsController implements Initializable {
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Unexpected Error.\nCouldnt Unbook");
 
-                }*/
+                }
             }
+            */
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete booking");
+            alert.setHeaderText("Confirm you want to delete your booking");
+            alert.setContentText("Booked " + booking.getCourt().getName() + " for " + 
+                    booking.getMadeForDay() + " at " + booking.getFromTime());
+            Optional<ButtonType> result = alert.showAndWait();
+            
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                if(Utils.cancelBooking(booking, today)){
+                    alert = new Alert(Alert.AlertType.INFORMATION, "Unbooked succesfully");
+                    alert.show();
+                    listView.getItems().remove(booking);
+                    listView.refresh();
+                }else{
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Unable to delete booking");
+                    alert.setHeaderText("You cant delete this booking");
+                    alert.setContentText("Your booking date if very close (less than 24 h)"
+                            + " so you cant cancell it. \nSorry for the inconvenience");
+                    alert.showAndWait();
+                }
+            }
+            
         }
         
     }
     
-}
+
 
 class BookingListCell extends ListCell<Booking>{
 
@@ -152,7 +182,8 @@ class BookingListCell extends ListCell<Booking>{
         if(t==null || bln){
             setText(null);
         }else{
-            setText("Reservada la pista x el día " +t.getMadeForDay() + " a las " + t.getFromTime() );
+            setText("Reservada la pista "+ t.getCourt().getName() +" el día " +t.getMadeForDay() + " a las " + t.getFromTime() 
+                    + (t.getPaid() ? " pagada" : " por pagar") );
         }
     }
     
