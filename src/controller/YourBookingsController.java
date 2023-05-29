@@ -145,20 +145,27 @@ public class YourBookingsController implements Initializable {
                 }
             }
             */
+        
+        
+            // ALERTA
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete booking");
             alert.setHeaderText("Confirm you want to delete your booking");
             alert.setContentText("Booked " + booking.getCourt().getName() + " for " + 
                     booking.getMadeForDay() + " at " + booking.getFromTime());
             Optional<ButtonType> result = alert.showAndWait();
+            //------------------------------------------------------------------
+            
             
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 if(Utils.cancelBooking(booking, today)){
+                    // ALERTA - Unbooked succesfully
                     alert = new Alert(Alert.AlertType.INFORMATION, "Unbooked succesfully");
                     alert.show();
                     listView.getItems().remove(booking);
                     listView.refresh();
                 }else{
+                    //Alerta - error 24h
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Unable to delete booking");
                     alert.setHeaderText("You cant delete this booking");
