@@ -390,7 +390,7 @@ public class UserPageController implements Initializable {
         Button b = (Button) event.getSource();
         char num = b.getId().charAt(b.getId().length() - 1);
         String court = "Pista " + num;
-        Booking booking = isAvailable(court);
+        Booking booking = Utils.isAvailable(court, localHour, selectedDay);
         if(booking != null){
             if(booking.getMember().equals(member)){
                 booking.getPaid();
@@ -411,7 +411,7 @@ public class UserPageController implements Initializable {
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText("");
                     //cancel booking
-                    if(cancelBooking(booking)){ 
+                    if(Utils.cancelBooking(booking, today)){ 
                     //cancelBooking() = true if booking cancelled
                         alert.setContentText("court cancelled");
                     }
@@ -612,7 +612,6 @@ public class UserPageController implements Initializable {
         YourBookingsController modifypage = miCargador.getController();
         System.out.println(member.getName());
         modifypage.initMember(member);
-        
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -645,6 +644,7 @@ public class UserPageController implements Initializable {
     }
     
     // return null is the court is available, else return booking
+    /*
     private Booking isAvailable(String court){
         try{
             club = Club.getInstance();
@@ -673,5 +673,6 @@ public class UserPageController implements Initializable {
         }
         return false;
     }
+*/
 
 }

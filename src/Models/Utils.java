@@ -47,60 +47,31 @@ public class Utils {
         return null;
     }
     
-    public static void refreshCourtImages(Button []buttons, ImageView []images, LocalDate selectedDay, Member member, LocalTime localHour){
-        //[]buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
-        //ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
-        if(localHour == null){
-            for(int i = 0; i < buttons.length; i++){
-                buttons[i].setVisible(false);
-                images[i].setVisible(false);
-            }
+    public static boolean cancelBooking(Booking booking, LocalDateTime today){
+        LocalDate date = booking.getMadeForDay();
+        LocalDateTime book = date.atTime(booking.getFromTime());
+        if(book.compareTo(today.plusHours(24)) > 0){
+            try{
+            Club club = Club.getInstance();
+            club.removeBooking(booking);
+            return true;
+            }catch(Exception e){System.err.println(e.getMessage());}               
         }
-        else{
-            for(int i = 0; i < buttons.length; i++){
-                buttons[i].setVisible(true);
-                images[i].setVisible(true);
-            }
-            for(int i = 1; i <= 6; i++){
-                String court = "Pista " + i;
-                Member m = isBooked(court, localHour, selectedDay);
-                if( m != null ){
-                    if(m == member) images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "BlueCourt.png"));
-                    else{
-                        images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png"));   
-                        // set label with member
-                    }
-                    
-                }
-                else{
-                    images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "GreenCourt.png"));
-                }
-            
-            }
-        }
+        return false;
     }
     
-    public static void refreshGrid(LocalDate selectedDay, Label []labels){
-        try {
+    public static Booking isAvailable(String court, LocalTime localHour, LocalDate selectedDay){
+        try{
             Club club = Club.getInstance();
-            List<Booking> books = club.getForDayBookings(selectedDay);
-            //Label[]labels = {label9,label10,label11,label12,label13,label14,label15,label16,label17,label18,label19,label20,label21};
-            
-            for(int j = 0; j<labels.length;j++){
-                int remain=6;
-                for(int i = 0; i<books.size();i++){
-                    if(books.get(i).getFromTime().equals(LocalTime.of(9+j, 0))) {
-                         remain--;
-                    }
+            List<Booking> list = club.getCourtBookings(court, selectedDay);
+            for(Booking booking : list){
+                if(booking.getFromTime().equals(localHour)) {
+                    return booking;
                 }
-                labels[j].setText("There are "+remain+" courts left");
-            } 
-            
-            
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
+        return null;
     }
 }

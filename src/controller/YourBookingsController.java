@@ -4,9 +4,12 @@
  */
 package controller;
 
+import Models.Utils;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,6 +41,7 @@ public class YourBookingsController implements Initializable {
     private ObservableList observable;
     private Member member;
     private LocalDateTime today = LocalDateTime.now();
+    private LocalDate selectedDay;
     @FXML
     private Button cancelBooking;
     /**
@@ -90,12 +95,18 @@ public class YourBookingsController implements Initializable {
 
     }
     
-    /** Checks if the cancelation can be done be the criterium of
-     * the club ( 24h of anticipation )
-     * @return true if the cancelation can be done, false otherwise
+    /** checks if the cancellation process can be performed (24h anticipation)
+     *  if true: cancel book, return true
+     *  otherwise: return false
      */
-    boolean checkValidCancel() {
-        return false;
+    boolean cancel(Booking booking) {
+        return Utils.cancelBooking(booking, today);
+    }
+
+    @FXML
+    private void deleteBooking(ActionEvent event) {
+        
+        
     }
     
 }

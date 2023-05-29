@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.YourBookingsController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.YourBookingsController">
    <children>
       <Pane prefHeight="107.0" prefWidth="394.0">
          <children>
@@ -29,7 +29,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="cancelBooking" defaultButton="true" disable="true" layoutX="51.0" layoutY="10.0" mnemonicParsing="false" text="Cancel booking" />
+                  <Button fx:id="cancelBooking" defaultButton="true" disable="true" layoutX="51.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteBooking" text="Cancel booking" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" />
