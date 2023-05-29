@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -110,6 +111,22 @@ public class ModifyPage implements Initializable {
         System.out.println(isValid);
         if (isValid) {
             member.setImage(new Image( avatarUrl[selectedAvatar] ) );
+            member.setName(textName.getText());
+            member.setSurname(textSurname.getText());
+            member.setPassword(textPassword.getText());
+            member.setTelephone(textPhone.getText());
+            member.setCreditCard(textCreditCard.getText());
+            if(textSCV.getText().equals("")){
+                member.setSvc(0);
+            }else{
+                member.setSvc(Integer.parseInt(textSCV.getText()));
+            }
+            Alert changedCorrectly = new Alert(Alert.AlertType.INFORMATION);
+           changedCorrectly.setHeaderText("Modification confirmation");
+           changedCorrectly.setTitle("Done!");
+           changedCorrectly.setContentText("Your data has been modified");
+           changedCorrectly.show();
+            
         }
         
     }
@@ -123,7 +140,13 @@ public class ModifyPage implements Initializable {
         textRepeatedPassword.setText(member.getPassword());
         textPhone.setText(member.getTelephone());
         textCreditCard.setText(member.getCreditCard());
-        textSCV.setText(""+member.getSvc());
+        if(member.getSvc()==0){  
+            textSCV.setText("");
+        }else{
+            textSCV.setText(""+member.getSvc());
+
+        }
+        
         avatarView.setImage( member.getImage() );
 
         

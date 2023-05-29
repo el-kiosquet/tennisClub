@@ -17,6 +17,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-text-fill: blue;
     -fx-border-color: black;
 }
+.text-label-selected{
+    -fx-background-color: white;
+    -fx-text-fill: purple;
+    -fx-border-color: black;
+}
 .text-hour{
     -fx-background-color: lightgrey;
 }

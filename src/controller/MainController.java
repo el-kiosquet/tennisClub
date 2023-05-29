@@ -126,6 +126,7 @@ public class MainController implements Initializable {
    private LocalTime localHour;
    private Club club;
    private int remain=6;
+   private Label actual;
     /**
      * Initializes the controller class.
      */
@@ -257,7 +258,7 @@ public class MainController implements Initializable {
         //System.out.println(event.getSource());
         //System.out.println(event.getTarget());
         //System.out.println("-------");
-        
+        if(actual != null){actual.setStyle("-fx-text-fill:blue");}
         Object source = event.getSource();
         EventTarget target = event.getTarget();
         
@@ -265,6 +266,8 @@ public class MainController implements Initializable {
         
         if(target.getClass().equals(label19.getClass())){
             Label lb = (Label) target;
+            actual= lb;
+            lb.setStyle("-fx-text-fill: purple");
             GridPane.getRowIndex(lb);
             int a = GridPane.getRowIndex(lb);
             localHour = Utils.toHour(a + 8);
@@ -275,6 +278,8 @@ public class MainController implements Initializable {
         }
         else if(source.getClass().equals(label19.getClass())){
             Label lb = (Label) source;
+            actual= lb;
+            lb.setStyle("-fx-text-fill: purple");
             int a = GridPane.getRowIndex(lb);
             localHour = Utils.toHour(a + 8);
             refreshGrid();
