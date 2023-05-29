@@ -236,7 +236,7 @@ public class UserPageController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Esta es tu ventana de usuario");
+        stage.setTitle("Modify your data");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal
@@ -253,7 +253,7 @@ public class UserPageController implements Initializable {
         Scene scene = new Scene(root, logOut.getScene().getWidth(), logOut.getScene().getHeight());
         Stage stage = (Stage) logOut.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Esta es tu ventana de usuario");
+        stage.setTitle("Tennis Club");
         //stage.initModality(Modality.APPLICATION_MODAL);
         stage.resizableProperty().set(true);
                  //la ventana se muestra modal
@@ -615,7 +615,7 @@ public class UserPageController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Esta es tu ventana de usuario");
+        stage.setTitle("Your bookings");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.resizableProperty().set(false);
                  //la ventana se muestra modal

@@ -163,7 +163,7 @@ public class MainController implements Initializable {
         Scene scene = new Scene(root,400,500);
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Registrar un nuevo usuario");
+        stage.setTitle("Register new user");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.resizableProperty().set(false);
         //la ventana se muestra modal
