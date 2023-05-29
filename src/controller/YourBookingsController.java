@@ -10,8 +10,11 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +23,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import model.Booking;
@@ -105,7 +110,35 @@ public class YourBookingsController implements Initializable {
 
     @FXML
     private void deleteBooking(ActionEvent event) {
-        
+        Booking booking = listView.getFocusModel().getFocusedItem();
+        if ( booking.getBookingDate().minus(24, ChronoUnit.HOURS).compareTo(ChronoLocalDateTime.from(LocalDateTime.now())) < 0 ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Unable to delete booking");
+            alert.setHeaderText("You cant delete this booking");
+            alert.setContentText("Your booking date if very close (less than 24 h)"
+                    + " so you cant cancell it. \nSorry for the inconvenience");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete booking");
+            alert.setHeaderText("Confirm you want to delete your booking");
+            alert.setContentText("Booked " + booking.getCourt() + " for " + 
+                    booking.getMadeForDay() + " at " + booking.getFromTime());
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                boolean done = false;
+                try{
+                    done = Club.getInstance().removeBooking( booking );
+                } catch (Exception e) { }
+                /* WIP
+                if (done){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Unbooked succesfully");
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Unexpected Error.\nCouldnt Unbook");
+
+                }*/
+            }
+        }
         
     }
     
