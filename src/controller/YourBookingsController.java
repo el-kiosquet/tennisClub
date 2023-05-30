@@ -55,8 +55,13 @@ public class YourBookingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listView.setCellFactory(c-> new BookingListCell());
-        cancelBooking.disableProperty().bind( listView.focusedProperty().not() );
-        
+        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                cancelBooking.setDisable(false);
+            } else {
+                cancelBooking.setDisable(true);
+            }
+        });
     } 
     void initMember(Member user){
         member=user;
