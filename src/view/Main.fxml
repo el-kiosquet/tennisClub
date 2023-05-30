@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -128,7 +129,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="221.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" />
@@ -152,7 +153,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -175,7 +176,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" />
@@ -199,7 +200,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -222,7 +223,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" />
@@ -246,7 +247,7 @@
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
+                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -265,20 +266,26 @@
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="479.0" prefWidth="229.0" style="-fx-background-color: lightyellow; -fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../Styles/style1.css">
+            <VBox prefHeight="855.0" prefWidth="255.0" style="-fx-background-color: lightyellow; -fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../Styles/style1.css">
                <children>
-                  <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="279.2578125">
                      <VBox.margin>
-                        <Insets left="20.0" right="20.0" top="40.0" />
+                        <Insets bottom="5.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="img" fitHeight="150.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="40.0" left="30.0" right="30.0" top="40.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../img/racket_login.png" />
+                     </image>
                   </ImageView>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
-                           <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" />
                         <TextField fx:id="username" onKeyPressed="#checkForEnter" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="74.0703125">
@@ -287,6 +294,11 @@
                            </VBox.margin>
                         </Text>
                         <PasswordField fx:id="password" onKeyPressed="#checkForEnter" />
+                        <Button fx:id="login" mnemonicParsing="false" onAction="#autentication" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Log In">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="30.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -295,27 +307,28 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="115.0" prefWidth="240.0" spacing="10.0">
+                  <VBox prefHeight="376.0" prefWidth="279.0">
                      <children>
-                        <Button fx:id="login" mnemonicParsing="false" onAction="#autentication" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Log In">
+                        <Line endX="264.8335266113281" endY="-9.177666664123535" startX="542.7122192382812" startY="-9.177666664123535" strokeWidth="3.0">
                            <VBox.margin>
-                              <Insets />
+                              <Insets top="120.0" />
                            </VBox.margin>
-                        </Button>
+                        </Line>
                         <Button fx:id="register" mnemonicParsing="false" onAction="#click" prefHeight="40.0" prefWidth="218.0" styleClass="button-general" text="Register New Account">
                            <VBox.margin>
-                              <Insets />
+                              <Insets left="30.0" right="30.0" top="40.0" />
                            </VBox.margin>
                         </Button>
+                        <ImageView fitHeight="97.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets left="30.0" right="30.0" top="30.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../img/pngfind.com-tennis-racquet-png-6919852.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                     <padding>
-                        <Insets left="10.0" right="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
                   </VBox>
-                  <ImageView fitHeight="295.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </children>
@@ -324,7 +337,7 @@
    <top>
       <AnchorPane prefHeight="0.0" prefWidth="1146.0" style="-fx-background-color: lightyellow; -fx-border-color: black; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" text="ClubName">
+            <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" text="GreenBall">
                <font>
                   <Font size="39.0" />
                </font>

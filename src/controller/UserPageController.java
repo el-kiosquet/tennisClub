@@ -483,7 +483,7 @@ public class UserPageController implements Initializable {
             //if to check is court already booked
             if(isBooked(court.getName(), localHour) != null)
                 return false;
-            if(localHour.compareTo(today.toLocalTime())<0){         /// if para comprobar que no estás guardando en el pasado
+            if(selectedDay.compareTo(today.toLocalDate())<=0 && localHour.compareTo(today.toLocalTime())<0){         /// if para comprobar que no estás guardando en el pasado
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Exception dialog");
                 alert.setHeaderText("You can't book this court");
