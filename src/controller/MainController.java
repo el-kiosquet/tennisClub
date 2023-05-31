@@ -35,6 +35,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Booking;
@@ -127,6 +128,30 @@ public class MainController implements Initializable {
    private Club club;
    private int remain=6;
    private Label actual;
+    @FXML
+    private Label pista1name;
+    @FXML
+    private Label pista1label;
+    @FXML
+    private Label pista2name;
+    @FXML
+    private Label pista2label;
+    @FXML
+    private Label pista3name;
+    @FXML
+    private Label pista3label;
+    @FXML
+    private Label pista4name;
+    @FXML
+    private Label pista5name;
+    @FXML
+    private Label pista5label;
+    @FXML
+    private Label pista6name;
+    @FXML
+    private Label pista6label;
+    @FXML
+    private Label pista4label;
     /**
      * Initializes the controller class.
      */
@@ -136,6 +161,7 @@ public class MainController implements Initializable {
        calendar.setValue(today);
        calendar.setEditable(false);
        calendarInitializations();
+       showPistasLabels(false);
        String css = this.getClass().getResource("/Styles/style1.css").toExternalForm();
        refreshCourtImages();
        refreshGrid();
@@ -259,6 +285,7 @@ public class MainController implements Initializable {
         //System.out.println(event.getSource());
         //System.out.println(event.getTarget());
         //System.out.println("-------");
+        showPistasLabels(true);
         if(actual != null){actual.setStyle("-fx-text-fill:blue");}
         Object source = event.getSource();
         EventTarget target = event.getTarget();
@@ -340,6 +367,7 @@ public class MainController implements Initializable {
         private void refreshCourtImages(){
         Button []buttons = {pista1, pista2, pista3, pista4, pista5, pista6};
         ImageView []images = {pista1img,pista2img,pista3img,pista4img,pista5img,pista6img};
+        Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
         if(localHour == null){
             for(int i = 0; i < buttons.length; i++){
                 buttons[i].setVisible(false);
@@ -353,28 +381,53 @@ public class MainController implements Initializable {
             }
             for(int i = 1; i <= 6; i++){
                 String court = "Pista " + i;
-                if(isBooked(court, localHour)){
-                    //   /img/
-                    images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png"));
+                Member m = isBooked(court, localHour);
+                if( m != null ){
+
+                        images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "RedCourt.png")); 
+                        nickPistas[i - 1].setVisible(true);
+                        nickPistas[i - 1].setText(m.getNickName());
+                    
                 }
                 else{
                     images[i - 1].setImage(new Image(File.separator + "img" + File.separator + "GreenCourt.png"));
+                    nickPistas[i - 1].setVisible(false);
                 }
             
             }
         }
     }
-            private boolean isBooked(String court, LocalTime hour){
+        private Member isBooked(String court, LocalTime hour){
         try{
             club = Club.getInstance();
             List<Booking> bookings = club.getCourtBookings(court, selectedDay);
             for(Booking b : bookings){
-                if(b.getFromTime().equals(hour)) return true;
+                if(b.getFromTime().equals(hour)) return b.getMember();
             }
         }catch(Exception e){
             Logger.getLogger(UserPageController.class.getName()).log(Level.SEVERE, null, e);
         }
-        return false;
+        return null;
+    }
+            
+        private void showPistasLabels(boolean show){
+        Label [] namePistas = {pista1name, pista2name, pista3name, pista4name, pista5name, pista6name}; 
+        Label[] nickPistas = {pista1label,pista2label, pista3label, pista4label, pista5label, pista6label};
+        ImageView []imgPistas = {pista1img, pista2img, pista3img, pista4img, pista5img, pista6img};
+        try{
+            Club club = Club.getInstance();
+            List<Court> courts = club.getCourts();
+            for(int i = 0; i < courts.size(); i++){
+                imgPistas[i].setVisible(show);
+                namePistas[i].setText(courts.get(i).getName());
+                namePistas[i].setVisible(show);
+                nickPistas[i].setVisible(show);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        
     }
     
     
