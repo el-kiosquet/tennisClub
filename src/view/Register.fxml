@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
    <children>
       <VBox prefHeight="500.0" prefWidth="400.0">
          <children>
@@ -57,7 +58,10 @@
                         <ChoiceBox fx:id="avatarSelect" prefWidth="150.0" style="-fx-background-color: #c07f00;">
                            <VBox.margin>
                               <Insets bottom="10.0" />
-                           </VBox.margin></ChoiceBox>
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ChoiceBox>
                      </children></VBox>
                </children>
             </HBox>
@@ -180,8 +184,14 @@
                   <Label fx:id="errorGeneral" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="145.0" textAlignment="RIGHT" textFill="RED" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #ffd95a;">
                      <children>
-                        <Button fx:id="registryButton" mnemonicParsing="false" onAction="#registry" prefHeight="25.0" prefWidth="111.0" text="Register" />
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAct" prefHeight="25.0" prefWidth="115.0" text="Cancel" />
+                        <Button fx:id="registryButton" mnemonicParsing="false" onAction="#registry" prefHeight="25.0" prefWidth="111.0" text="Register">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelAct" prefHeight="25.0" prefWidth="115.0" text="Cancel">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                </children>
