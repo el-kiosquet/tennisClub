@@ -156,7 +156,7 @@ public class YourBookingsController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Delete booking");
             alert.setHeaderText("Confirm you want to delete your booking");
-            alert.setContentText("Booked " + booking.getCourt().getName() + " for " + 
+            alert.setContentText("Booked " + booking.getCourt().getName().replace("Pista","Court") + " for " + 
                     booking.getMadeForDay() + " at " + booking.getFromTime());
             Optional<ButtonType> result = alert.showAndWait();
             //------------------------------------------------------------------
@@ -194,8 +194,8 @@ class BookingListCell extends ListCell<Booking>{
         if(t==null || bln){
             setText(null);
         }else{
-            setText("Reservada la pista "+ t.getCourt().getName() +" el día " +t.getMadeForDay() + " a las " + t.getFromTime() 
-                    + (t.getPaid() ? " pagada" : " por pagar") );
+            setText("Booked  "+ t.getCourt().getName().replace("Pista","Court") +" for " +t.getMadeForDay() + " at " + t.getFromTime() 
+                    + (t.getPaid() ? " paid" : " pending payment") );
         }
     }
     

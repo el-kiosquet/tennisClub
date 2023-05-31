@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
+<BorderPane stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
    <center>
       <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
          <children>
@@ -107,7 +107,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Label fx:id="pista1name" prefHeight="17.0" prefWidth="163.0" text="Label" />
+                        <Label fx:id="pista1name" alignment="CENTER" prefHeight="17.0" prefWidth="163.0" text="Label" />
                         <Button fx:id="pista1" maxWidth="204.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="130.0" prefWidth="204.0">
                            <graphic>
                               <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
