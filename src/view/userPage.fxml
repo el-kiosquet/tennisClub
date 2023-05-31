@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -52,7 +53,10 @@
                <children>
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="124.0" styleClass="text-tittle" text="Horarios" />
                   <Label alignment="CENTER" prefHeight="40.0" prefWidth="227.0" styleClass="text-tittle" text="Pistas" GridPane.columnIndex="1" />
-                  <Label fx:id="label9" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="71.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="label9" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="71.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="130.0" styleClass="text-hour" text="10:00-11:00" GridPane.rowIndex="2" />
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="121.0" styleClass="text-hour" text="9:00-10:00" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="132.0" styleClass="text-hour" text="19:00-20:00" GridPane.rowIndex="11" />
@@ -62,22 +66,58 @@
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="139.0" styleClass="text-hour" text="15:00-16:00" GridPane.rowIndex="7" />
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="142.0" styleClass="text-hour" text="14:00-15:00" GridPane.rowIndex="6" />
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="137.0" styleClass="text-hour" text="13:00-14:00" GridPane.rowIndex="5" />
-                  <Label fx:id="label12" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="73.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="label12" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="73.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="144.0" styleClass="text-hour" text="12:00-13:00" GridPane.rowIndex="4" />
-                  <Label fx:id="label11" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="68.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="label11" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="68.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="146.0" styleClass="text-hour" text="11:00-12:00" GridPane.rowIndex="3" />
-                  <Label fx:id="label10" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="70.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="label20" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="89.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <Label fx:id="label10" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="70.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label20" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="89.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="144.0" styleClass="text-hour" text="20:00-21:00" GridPane.rowIndex="12" />
-                  <Label fx:id="label19" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="77.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                  <Label fx:id="label18" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="104.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <Label fx:id="label17" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="81.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <Label fx:id="label16" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="70.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <Label fx:id="label14" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="79.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label fx:id="label13" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="90.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label fx:id="label21" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="120.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <Label fx:id="label19" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="77.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label18" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="104.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label17" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="81.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label16" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="70.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label14" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="79.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label13" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="90.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label fx:id="label21" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="120.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                   <Label alignment="CENTER" prefHeight="44.0" prefWidth="141.0" styleClass="text-hour" text="21:00-22:00" GridPane.rowIndex="13" />
-                  <Label fx:id="label15" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="83.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label fx:id="label15" alignment="CENTER" onMouseClicked="#gridClicked" prefHeight="83.0" prefWidth="206.0" styleClass="text-label" text="Label" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                </children>
                <padding>
                   <Insets top="30.0" />
