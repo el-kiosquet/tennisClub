@@ -419,7 +419,7 @@ public class MainController implements Initializable {
             List<Court> courts = club.getCourts();
             for(int i = 0; i < courts.size(); i++){
                 imgPistas[i].setVisible(show);
-                namePistas[i].setText(courts.get(i).getName());
+                namePistas[i].setText(courts.get(i).getName().replace("Pista", "Court"));
                 namePistas[i].setVisible(show);
                 nickPistas[i].setVisible(show);
             }
