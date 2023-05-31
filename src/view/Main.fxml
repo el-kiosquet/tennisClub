@@ -20,9 +20,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane style="-fx-background-color: lightbrown;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<BorderPane stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <center>
-      <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" style="-fx-background-color: brown;" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox fillWidth="false" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="855.0" prefWidth="400.0" translateZ="10.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <HBox prefHeight="100.0" prefWidth="326.0">
                <children>
@@ -100,7 +100,7 @@
    <right>
       <HBox prefWidth="500.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="813.0" prefWidth="800.0" style="-fx-background-color: brown;" stylesheets="@../Styles/style1.css">
+            <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="813.0" prefWidth="800.0" styleClass="grid-pane" stylesheets="@../Styles/style1.css">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -264,7 +264,7 @@
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="855.0" prefWidth="255.0" style="-fx-background-color: lightyellow; -fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../Styles/style1.css">
+            <VBox prefHeight="855.0" prefWidth="255.0" styleClass="profile" stylesheets="@../Styles/style1.css">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="279.2578125">
                      <VBox.margin>
@@ -305,7 +305,7 @@
                         <Insets left="10.0" right="10.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="376.0" prefWidth="279.0">
+                  <VBox prefHeight="300.0" prefWidth="281.0">
                      <children>
                         <Line endX="264.8335266113281" endY="-9.177666664123535" startX="542.7122192382812" startY="-9.177666664123535" strokeWidth="3.0">
                            <VBox.margin>
@@ -319,13 +319,16 @@
                         </Button>
                         <ImageView fitHeight="97.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
-                              <Insets left="30.0" right="30.0" top="30.0" />
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
                            </VBox.margin>
                            <image>
                               <Image url="@../img/pngfind.com-tennis-racquet-png-6919852.png" />
                            </image>
                         </ImageView>
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                   </VBox>
                </children>
             </VBox>
@@ -333,9 +336,9 @@
       </HBox>
    </left>
    <top>
-      <AnchorPane prefHeight="0.0" prefWidth="1146.0" style="-fx-background-color: lightyellow; -fx-border-color: black; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="0.0" prefWidth="1146.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" text="GreenBall">
+            <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" style="-fx-font-size: 39;" text="GreenBall">
                <font>
                   <Font size="39.0" />
                </font>
