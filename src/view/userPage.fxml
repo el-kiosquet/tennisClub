@@ -293,11 +293,8 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label style="-fx-font-size: 39;" text="Club Name" />
+            <Label style="-fx-font-size: 39;" text="Green Ball" />
          </children>
-         <BorderPane.margin>
-            <Insets left="10.0" />
-         </BorderPane.margin>
       </HBox>
    </top>
 </BorderPane>
