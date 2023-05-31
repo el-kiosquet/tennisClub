@@ -113,6 +113,11 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
+                        <Pane prefHeight="77.0" prefWidth="214.0">
+                           <children>
+                              <Label fx:id="pista1name" alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="25.0" prefWidth="184.0" text="Pista 1" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista1" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista1img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -122,12 +127,12 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets left="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Pane prefHeight="105.0" prefWidth="221.0">
+                        <Pane prefHeight="105.0" prefWidth="214.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista1label" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="159.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" />
@@ -137,6 +142,11 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                      <children>
+                        <Pane prefHeight="77.0" prefWidth="197.0">
+                           <children>
+                              <Label fx:id="pista2name" alignment="CENTER" layoutX="20.0" layoutY="14.0" prefHeight="25.0" prefWidth="175.0" text="Pista 2" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista2" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista2img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -146,12 +156,12 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets right="20.0" top="30.0" />
+                              <Insets right="20.0" />
                            </VBox.margin>
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista2label" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -160,6 +170,11 @@
                      </children></VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                      <children>
+                        <Pane prefHeight="59.0" prefWidth="250.0">
+                           <children>
+                              <Label fx:id="pista3name" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="177.0" text="Pista 3" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista3" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista3img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -169,12 +184,12 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets left="20.0" />
                            </VBox.margin>
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista3label" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets left="20.0" />
@@ -184,6 +199,11 @@
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
+                        <Pane prefHeight="56.0" prefWidth="250.0">
+                           <children>
+                              <Label fx:id="pista4name" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Pista 4" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista4" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista4img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -193,12 +213,12 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista4label" alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -207,6 +227,11 @@
                      </children></VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
+                        <Pane prefHeight="45.0" prefWidth="250.0">
+                           <children>
+                              <Label fx:id="pista5name" alignment="CENTER" layoutX="31.0" layoutY="14.0" prefHeight="25.0" prefWidth="183.0" text="Pista 5" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista5" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista5img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -216,21 +241,23 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets left="20.0" top="30.0" />
+                              <Insets left="20.0" />
                            </VBox.margin>
                         </Button>
                         <Pane prefHeight="105.0" prefWidth="224.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista5label" alignment="CENTER" layoutX="38.0" layoutY="14.0" prefHeight="25.0" prefWidth="178.0" textAlignment="CENTER" />
                            </children>
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin>
                         </Pane>
                      </children>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
+                        <Pane prefHeight="42.0" prefWidth="250.0">
+                           <children>
+                              <Label fx:id="pista6name" alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" text="Pista 6" textAlignment="CENTER" />
+                           </children>
+                        </Pane>
                         <Button fx:id="pista6" maxWidth="148.0" mnemonicParsing="false" onAction="#courtSelected" prefHeight="128.0" prefWidth="93.0">
                            <graphic>
                               <ImageView fx:id="pista6img" fitHeight="120.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true" styleClass="button-courts">
@@ -240,12 +267,12 @@
                               </ImageView>
                            </graphic>
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets />
                            </VBox.margin>
                         </Button>
-                        <Pane prefHeight="105.0" prefWidth="224.0">
+                        <Pane prefHeight="105.0" prefWidth="176.0">
                            <children>
-                              <Label alignment="CENTER" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+                              <Label fx:id="pista6label" alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="25.0" prefWidth="180.0" textAlignment="CENTER" />
                            </children>
                            <VBox.margin>
                               <Insets right="20.0" />
@@ -336,7 +363,7 @@
       </HBox>
    </left>
    <top>
-      <AnchorPane prefHeight="0.0" prefWidth="1146.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="0.0" prefWidth="1189.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="14.0" prefHeight="56.0" prefWidth="300.0" style="-fx-font-size: 39;" text="GreenBall">
                <font>
