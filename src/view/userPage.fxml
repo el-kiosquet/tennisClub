@@ -123,6 +123,9 @@
                         <Label fx:id="pista1label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista1userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                      <children>
@@ -142,6 +145,9 @@
                         <Label fx:id="pista3label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista3userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                      <children>
@@ -161,6 +167,9 @@
                         <Label fx:id="pista2label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista2userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </GridPane.margin>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
@@ -180,6 +189,9 @@
                         <Label fx:id="pista4label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista4userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                      <children>
@@ -199,6 +211,9 @@
                         <Label fx:id="pista5label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista5userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
@@ -218,10 +233,13 @@
                         <Label fx:id="pista6label" alignment="CENTER" prefHeight="25.0" prefWidth="134.0" text="Nickname" textAlignment="CENTER" />
                         <ImageView fx:id="pista6userImg" fitHeight="89.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </VBox>
                </children>
                <HBox.margin>
-                  <Insets />
+                  <Insets bottom="10.0" />
                </HBox.margin>
             </GridPane>
          </children>
@@ -273,10 +291,13 @@
       </HBox>
    </left>
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Club Name" />
+            <Label style="-fx-font-size: 39;" text="Club Name" />
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
       </HBox>
    </top>
 </BorderPane>
