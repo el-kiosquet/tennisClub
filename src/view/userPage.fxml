@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane stylesheets="@../Styles/style1.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserPageController">
@@ -257,7 +258,13 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Text fx:id="nick" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="238.515625" />
+                        <Text fx:id="nick" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="238.515625">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
                         <Button fx:id="booked" alignment="CENTER" mnemonicParsing="false" onAction="#showMyBookings" prefHeight="35.0" prefWidth="170.0" text="My Bookings">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
@@ -295,6 +302,9 @@
          <children>
             <Label style="-fx-font-size: 39;" text="Green Ball" />
          </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
       </HBox>
    </top>
 </BorderPane>
