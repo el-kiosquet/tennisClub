@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -58,8 +59,10 @@ public class YourBookingsController implements Initializable {
         listView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 cancelBooking.setDisable(false);
+                cancelBooking.setCursor(Cursor.HAND);
             } else {
                 cancelBooking.setDisable(true);
+                cancelBooking.setCursor(Cursor.DEFAULT);
             }
         });
     } 
